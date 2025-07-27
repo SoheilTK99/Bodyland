@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <style>
+    .category-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 240px;
+      padding: 75px;
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 18px;
+      color: #333;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-top: 150px;
+    }
+    
+    .category-card:hover {
+      background-color: #7b2cbf;
+      color: white;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .category-card img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+  </style>
+
+  <div id="step4" class="product-type">
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+      <a href="{% url 'product:product_list' category='tools' %}" class="category-card">
+        <img src="{% static 'assets/images/tools.png' %}" alt="ابزار ورزشی" />
+        <span>ابزار ورزشی</span>
+      </a>
+
+      <a href="{% url 'product:product_list' category='clothes' %}" class="category-card">
+        <img src="{% static 'assets/images/clothes.png' %}" alt="پوشاک" />
+        <span>پوشاک</span>
+      </a>
+
+      <a href="{% url 'product:product_list' category='Supplement' %}" class="category-card">
+        <img src="{% static 'assets/images/Supplement.png' %}" alt="دارو و مکمل" />
+        <span>دارو و مکمل</span>
+      </a>
+
+      <a href="{% url 'product:product_list' category='other' %}" class="category-card">
+        <img src="{% static 'assets/images/other.png' %}" alt="سایر محصولات" />
+        <span>سایر محصولات</span>
+      </a>
+    </div>
+  </div>
+{% endblock %}

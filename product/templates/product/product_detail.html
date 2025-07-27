@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div style="max-width: 900px; margin: 120px auto; display: flex; gap: 50px; align-items: center;">
+  <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" style="width: 300px; border-radius: 12px;">
+  
+  <div>
+    <h2 style="font-size: 28px;">{{ product.product_name }}</h2>
+    <p style="font-size: 20px; color: #7b2cbf; margin: 15px 0;">{{ product.price }} تومان</p>
+    <p style="line-height: 2; font-size: 16px;">{{ product.product_discription }}</p>
+    <p style="margin-top: 20px;"><strong>وضعیت: </strong>{{ product.exist }}</p>
+    <p><strong>امتیاز: </strong>{{ product.product_rate }}</p>
+  </div>
+</div>
+
+{% endblock %}

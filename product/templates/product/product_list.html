@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  body {
+    font-family: 'Vazirmatn', sans-serif;
+    background-color: #f7f7f7;
+  }
+
+  .product-container {
+    max-width: 1200px;
+    margin: 120px auto 60px auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .product-card {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    width: 260px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(123, 44, 191, 0.3);
+  }
+
+  .product-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+  }
+
+  .product-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .product-price {
+    color: #7b2cbf;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .product-description {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.5;
+  }
+
+  .category-title {
+    text-align: center;
+    font-size: 24px;
+    color: #7b2cbf;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    font-weight: bold;
+  }
+</style>
+
+
+
+<div class="product-container">
+  {% for product in products %}
+  <a href="{% url 'product:product_detail' pk=product.pk %}" style="text-decoration: none;">
+    <div class="product-card">
+      <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}">
+      <div class="product-title">{{ product.product_name }}</div>
+      <div class="product-price">{{ product.price }} تومان</div>
+      <div class="product-description">{{ product.product_discription|truncatewords:15 }}</div>
+    </div>
+  </a>
+  {% empty %}
+    <p>.محصولی در این دسته وجود ندارد</p>
+  {% endfor %}
+</div>
+{% endblock %}
