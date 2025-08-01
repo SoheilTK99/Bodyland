@@ -136,7 +136,7 @@
           </div>
           <div style="text-align: right;" class="col-lg-5 align-self-center">
             <div class="section-heading">
-              <h6>معرفی</h6>
+              <h6 style="font-size: 17px;">معرفی</h6>
               <h2>!چرا بادی لند؟</h2>
               <p style="font-size: 18px;">!به بادی‌لند خوش آمدید؛ خانه تخصصی ورزش و تناسب اندام <br> بادی لند با تحربه چندین ساله خود در هدف ارتقاء سطح تمرین و تجربه ورزشی شما فعالیت  میکند </br></p>
             </div>
@@ -213,99 +213,75 @@
               <h2>دوره های ویژه</h2>
             </div>
           </div>
-          <div class="col-lg-12 col-md-6">
+          {% for course in courses  %}
+            <div class="col-lg-12 col-md-6">
             <div class="item">
               <div class="row">
                 <div class="col-lg-3">
                   <div class="image">
-                    <img src="/static/assets/images/event-01.jpg" alt="" />
+                    <img src="{{ course.course_lable.url }}" />
+                  </div>
+                </div>
+                <div class="col-lg-9">
+                  <ul>
+                    <li>
+                      <span class="category">{{ course.course_name }}</span>
+                      <h4> {{course.short_discription}}</h4>
+                    </li>
+                    <li>
+                      <span>تاریخ:</span>
+                      <h6>{{course.start_at}}</h6>
+                    </li>
+                    <li>
+                      <span>مدت زمان:</span>
+                      <h6>{{course.duration}} ساعت</h6>
+                    </li>
+                    <li>
+                      <span>قیمت:</span>
+                      <h6>{{course.course_price}} تومان </h6>
+                    </li>
+                  </ul>
+                  <a href="{% url 'course:course_detail' course.id %}"><i class="fa fa-angle-left"></i></a>
                   
-                  </div>
-                </div>
-                <div class="col-lg-9">
-                  <ul>
-                    <li>
-                      <span class="category">کاهش وزن</span>
-                      <h4>چربی سوزی به همراه رژیم غذایی</h4>
-                    </li>
-                    <li>
-                      <span>تاریخ:</span>
-                      <h6>1 مرداد 1404</h6>
-                    </li>
-                    <li>
-                      <span>مدت زمان:</span>
-                      <h6>22 ساعت</h6>
-                    </li>
-                    <li>
-                      <span>قیمت:</span>
-                      <h6>700,000 تومان </h6>
-                    </li>
-                  </ul>
-                  <a  href="#" ><i class="fa fa-angle-left" ></i></a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-12 col-md-6">
-            <div class="item">
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="section fun-facts">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="wrapper">
               <div class="row">
-                <div class="col-lg-3">
-                  <div class="image">
-                    <img src="/static/assets/images/event-02.jpg" alt="" />
+                <div class="col-lg-3 col-md-6">
+                  <div class="counter">
+                    <h2 class="timer count-title count-number" data-to="8" data-speed="1000"></h2>
+                    <p class="count-text">سال تجربه</p>
                   </div>
                 </div>
-                <div class="col-lg-9">
-                  <ul>
-                    <li>
-                      <span class="category"> دوره کات بعد از حجم </span>
-                      <h4> تمرینات هوازی به همراه استروئید </h4>
-                    </li>
-                    <li>
-                      <span>تاریخ:</span>
-                      <h6>1 مهر 1404</h6>
-                    </li>
-                    <li>
-                      <span>مدت زمان:</span>
-                      <h6>30 ساعت</h6>
-                    </li>
-                    <li>
-                      <span>قیمت:</span>
-                      <h6>1,000,000 تومان</h6>
-                    </li>
-                  </ul>
-                  <a href="#"><i class="fa fa-angle-left"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-12 col-md-6">
-            <div class="item">
-              <div class="row">
-                <div class="col-lg-3">
-                  <div class="image">
-                    <img src="/static/assets/images/event-03.jpg" alt="" />
+                <div class="col-lg-3 col-md-6">
+                  <div class="counter">
+                    <h2 class="timer count-title count-number" data-to="804" data-speed="1000"></h2>
+                    <p class="count-text">محصول ورزشی</p>
                   </div>
                 </div>
-                <div class="col-lg-9">
-                  <ul>
-                    <li>
-                      <span class="category">افزایش حجم فوری</span>
-                      <h4>تمرینات استقامتی به همراه مکمل</h4>
-                    </li>
-                    <li>
-                      <span>تاریخ:</span>
-                      <h6>20 آذر 1404</h6>
-                    </li>
-                    <li>
-                      <span>مدت زمان:</span>
-                      <h6>48 ساعت</h6>
-                    </li>
-                    <li>
-                      <span>قیمت:</span>
-                      <h6>2,200,000 تومان</h6>
-                    </li>
-                  </ul>
-                  <a href="#"><i class="fa fa-angle-left"></i></a>
+                <div class="col-lg-3 col-md-6">
+                  <div class="counter">
+                    <h2 class="timer count-title count-number" data-to="50" data-speed="1000"></h2>
+                    <p class="count-text">کارشناس و پشتیبان</p>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <div class="counter end">
+                    <h2 class="timer count-title count-number" data-to="200" data-speed="1000"></h2>
+                    <p class="count-text">تمرین ورزشی</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -313,7 +289,6 @@
         </div>
       </div>
     </div>
-
 
 
 
@@ -362,129 +337,6 @@
 </section>
 
 
-    <div class="section fun-facts">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="wrapper">
-              <div class="row">
-                <div class="col-lg-3 col-md-6">
-                  <div class="counter">
-                    <h2 class="timer count-title count-number" data-to="8" data-speed="1000"></h2>
-                    <p class="count-text">سال تجربه</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                  <div class="counter">
-                    <h2 class="timer count-title count-number" data-to="804" data-speed="1000"></h2>
-                    <p class="count-text">محصول ورزشی</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                  <div class="counter">
-                    <h2 class="timer count-title count-number" data-to="50" data-speed="1000"></h2>
-                    <p class="count-text">کارشناس و پشتیبان</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                  <div class="counter end">
-                    <h2 class="timer count-title count-number" data-to="200" data-speed="1000"></h2>
-                    <p class="count-text">تمرین ورزشی</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="team section" id="team">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6">
-            <div class="team-member">
-              <div class="main-content">
-                <img src="assets/images/member-01.jpg" alt="" />
-                <span class="category">UX Teacher</span>
-                <h4>Sophia Rose</h4>
-                <ul class="social-icons">
-                  <li>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="team-member">
-              <div class="main-content">
-                <img src="assets/images/member-02.jpg" alt="" />
-                <span class="category">Graphic Teacher</span>
-                <h4>Cindy Walker</h4>
-                <ul class="social-icons">
-                  <li>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="team-member">
-              <div class="main-content">
-                <img src="assets/images/member-03.jpg" alt="" />
-                <span class="category">Full Stack Master</span>
-                <h4>David Hutson</h4>
-                <ul class="social-icons">
-                  <li>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="team-member">
-              <div class="main-content">
-                <img src="assets/images/member-04.jpg" alt="" />
-                <span class="category">Digital Animator</span>
-                <h4>Stella Blair</h4>
-                <ul class="social-icons">
-                  <li>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
   </body>

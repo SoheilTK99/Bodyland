@@ -40,12 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     # My App
     'blog.apps.BlogConfig',
     'music.apps.MusicConfig',
     'workout.apps.WorkoutConfig',
     'account.apps.AccountConfig',
     'product.apps.ProductConfig',
+    'course.apps.CourseConfig',
 ]
 
 MIDDLEWARE = [

@@ -4,15 +4,17 @@
   <head>
     <!-- __________________________________ -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+
     <!-- __________________________________ -->
 
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
     <!-- __________________________________ -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/yekan-font@1.0.0/css/yekan-font.min.css">
-                
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/yekan-font@1.0.0/css/yekan-font.min.css" />
+
     <!-- __________________________________ -->
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
@@ -42,6 +44,42 @@
     <!-- End Footer -->
 
     <!-- Scripts -->
+
+    <script>
+      /* تبدیل اعداد انگلیسی به فارسی و تغییر فونت اعداد نسبت به متن اصلی سایت */
+      const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹']
+      
+      function convertToPersianNumbersAndAddClass(element) {
+        const nodes = element.querySelectorAll('*:not(script):not(style):not(textarea):not(code)')
+        nodes.forEach((node) => {
+          if (node.childNodes.length) {
+            node.childNodes.forEach((child) => {
+              if (child.nodeType === 3) {
+                const original = child.nodeValue
+                const converted = original.replace(/\d/g, (d) => persianDigits[d])
+                if (original !== converted) {
+                  const span = document.createElement('span')
+                  span.className = 'numbers-only'
+                  span.textContent = converted
+                  node.replaceChild(span, child)
+                }
+              }
+            })
+          }
+        })
+      }
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        convertToPersianNumbersAndAddClass(document.body)
+      })
+    </script>
+
+    <style>
+      .numbers-only {
+        font-family: 'Vazirmatn', sans-serif !important; /* فونت خاص برای اعداد */
+      }
+    </style>
+
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
@@ -52,11 +90,20 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
-
     <script type="text/javascript">
-      !function(){var i="rxG3xv",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
+      !(function () {
+        var i = 'rxG3xv',
+          a = window,
+          d = document
+        function g() {
+          var g = d.createElement('script'),
+            s = 'https://www.goftino.com/widget/' + i,
+            l = localStorage.getItem('goftino_' + i)
+          ;(g.async = !0), (g.src = l ? s + '?o=' + l : s)
+          d.getElementsByTagName('head')[0].appendChild(g)
+        }
+        'complete' === d.readyState ? g() : a.attachEvent ? a.attachEvent('onload', g) : a.addEventListener('load', g, !1)
+      })()
     </script>
-
   </body>
 </html>
