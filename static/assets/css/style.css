@@ -199,6 +199,7 @@ body {
 
 .section-heading {
   margin-bottom: 60px;
+  
 }
 
 .section-heading h2 {
@@ -207,11 +208,13 @@ body {
   text-transform: capitalize;
   margin: 20px 0;
   line-height: 44px;
+  
 }
 
 .section-heading h2 em {
   color: #7a6ad8;
   font-style: normal;
+  
 }
 
 .section-heading h6 {
@@ -238,6 +241,7 @@ body {
   background-color: #7a6ad8;
   color: #fff;
 }
+
 
 /* 
 ---------------------------------------------
@@ -818,51 +822,6 @@ Banner Style
   margin-bottom: 40px;
 }
 
-.main-banner .item p {
-  color: #fff;
-  width: 65%;
-}
-
-.main-banner .item .buttons {
-  display: flex;
-  margin-top: 50px;
-}
-
-.main-banner .item .buttons .main-button {
-  margin-right: 30px;
-}
-
-.main-banner .item .buttons .main-button a {
-  font-size: 14px;
-  color: #7a6ad8;
-  background-color: #fff;
-  display: inline-block;
-  height: 50px;
-  line-height: 50px;
-  padding: 0px 25px;
-  border-radius: 25px;
-  font-weight: 500;
-}
-
-.main-banner .item .buttons .icon-button i {
-  color: #7a6ad8;
-  background-color: #fff;
-  display: inline-block;
-  height: 50px;
-  width: 50px;
-  text-align: center;
-  line-height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
-  font-size: 16px;
-}
-
-.main-banner .item .buttons .icon-button a {
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-}
-
 .main-banner .owl-nav {
   position: absolute;
   max-width: 1320px;
@@ -1113,36 +1072,8 @@ Courses Style
   display: inline-block;
 }
 
-.events_item .thumb span.price {
-  position: absolute;
-  right: -30px;
-  top: -50px;
-  background-color: rgba(122, 106, 216, 0.95);
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  display: inline-block;
-  transition: all .3s;
-}
-
-.events_item .thumb span.price h6 {
-  margin-top: 72px;
-  margin-left: 22px;
-  font-size: 28px;
-  text-transform: uppercase;
-  color: #fff;
-  font-weight: 700;
-}
-
-.events_item .thumb span.price em {
-  font-size: 18px;
-  font-weight: 500;
-  font-style: normal;
-  vertical-align: top;
-}
-
 .events_item {
-  background-color: #f1f0fe;
+  background-color: #f0fef5;
   border-radius: 25px;
   margin-bottom: 30px;
   position: relative;
@@ -1736,6 +1667,13 @@ Contact Style
 Footer Style
 --------------------------------------------- 
 */
+
+
+.contact-us::before {
+  right: 0 !important;
+  left: auto !important;
+  transform: rotate(180deg);
+}
 
 footer {
   margin-top: 0px;
