@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
-
+{% block body_class %}home-page{% endblock %}
 {% block content %}
   <style>
     .h4 {
@@ -9,6 +9,10 @@
     }
     .item item-1 {
       direction: rtl;
+    }
+    .fix-font-numbers {
+      font-variant-numeric: normal;
+      unicode-bidi: plaintext;
     }
   </style>
 
@@ -18,61 +22,71 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="owl-carousel owl-banner">
-              <div class="item item-1" style="direction: rtl;">
-                <div class="header-text">
-                  <br /><br />
-                  <h2>از رویا تا واقعیت، با بادی‌لند</h2>
-                  <br /><br />
-                  <br /><br />
-                  <br /><br />
-                  <br /><br />
+                <div class="item item-1" style="direction: rtl;">
+                  <div class="header-text">
+                    <br /><br />
+                    <h2 style="padding-right: 40px;">از رویا تا واقعیت، با بادی‌لند</h2>
+                    <br /><br />
+                    <br /><br />
+                    <br /><br />
+                    <br /><br />
+                  </div>
                 </div>
-              </div>
-              <div class="item item-2" style="direction: rtl;">
-                <div class="header-text">
-                  <br /><br />
-                  <br /><br />
-                  <br /><br />
-                  <h2>از رویا تا واقعیت، با بادی‌لند</h2>
-                  <br /><br />
-                  <br /><br />
+               <a href="#events"> 
+                <div class="item item-2" style="direction: rtl; ">
+                  <div class="header-text" >
+                    <h2 style="text-align:center;"> برگزارکننده دوره های تناسب اندام </h2>
+                    <br /><br />
+                    <br /><br />
+                    <br /><br />
+                    <br /><br />
+                    <br /><br />
+                  </div>
                 </div>
-              </div>
-              <div class="item item-3" style="direction: rtl;">
-                <div class="header-text">
-                  <br /><br />
-                  <h2>از رویا تا واقعیت، با بادی‌لند</h2>
-                  <br /><br />
-                  <br /><br />
-                  <br /><br />
-                  <br /><br />
+               </a> 
+               <a href="/product/"> 
+                <div class="item item-3" style="direction: rtl;">
+                  <div class="header-text">
+                    <br /><br />
+                    <h2 style="padding-right: 40px;">  پاتوق انواع تجهیزات ورزشی  </h2>
+                    <br /><br />
+                    <br /><br />
+                    <br /><br />
+                    <br /><br />
+                  </div>
                 </div>
-              </div>
-              <div class="item item-4" style="direction: rtl;">
-                <div class="header-text">
-                  <br /><br />
-                  <br /><br />
-                  <br /><br />
-                  <h2>از رویا تا واقعیت، با بادی‌لند</h2>
-                  <br /><br />
-                  <br /><br />
+               </a>
+               <a href="/music/"> 
+                <div class="item item-4" style="direction: rtl;">
+                  <div class="header-text">
+                    <br /><br />
+                    <br /><br />
+                    <br /><br />
+                    <h2> بروزترین موزیک های مخصوص تمرین </h2>
+                    <br /><br />
+                    <br /><br />
+                  </div>
                 </div>
-              </div>
-              <div class="item item-5" style="direction: rtl;">
-                <div class="header-text">
-                  <br /><br />
-                  <br /><br />
-                  <br /><br />
-                  <h2>از رویا تا واقعیت، با بادی‌لند</h2>
-                  <br /><br />
-                  <br /><br />
+               </a> 
+               <a href="/workout/">
+                <div class="item item-5" style="direction: rtl;">
+                  <div class="header-text">
+                    <h2 style="padding-right: 0px;"> برنامه تمرینی مخصوص <br> خودت رو داشته باش! </h2>
+                    <br /><br />
+                    <br /><br />       
+                    <br /><br />
+                    <br /><br />
+                  </div>
                 </div>
-              </div>
+               </a> 
             </div>
           </div>
         </div>
       </div>
     </div>
+
+
+
 
     <div style="font-family: 'Vazirmatn', sans-serif; text-align: right; " class="section testimonials">
       <div class="container">
@@ -94,12 +108,11 @@
                 <p style="direction: rtl; text-align: justify; ">موزیک در حین تمرین نقش خیلی مهمی در افزایش انگیزه و تمرکز دارد. آهنگ‌های پرانرژی باعث می‌شوند ورزشکار خستگی را کمتر احساس کند، ریتم تمرینات بهتر حفظ شود و عملکرد کلی بالاتر برود. در بادی‌لند ما مجموعه‌ای از موزیک‌های مخصوص باشگاه را آماده کرده‌ایم تا بتوانید با انرژی بیشتری تمرین کنید و تجربه ورزشی شما لذت‌بخش‌تر و مؤثرتر شود</p>
                 <div class="author">
                   <img src="/static/assets/images/music-card.png" alt="" style=" " />
-
                   <br /><br />
                 </div>
               </div>
               <div class="item">
-                <h4>فروشگاه بادی لند و پشتیبانی 24 ساعته</h4>
+                <h4 class="fix-font-numbers">فروشگاه بادی لند و پشتیبانی ۲۴ ساعته</h4>
                 <br /><br />
                 <p style="direction: rtl; text-align: justify; ">هدف ما این است که شما بدون دغدغه، هر آنچه برای ورزش نیاز دارید را در کوتاه‌ترین زمان و با بهترین قیمت در اختیار داشته باشید. ما در بادی‌لند فقط به ارائه برنامه و محصولات بسنده نکرده‌ایم. تیم پشتیبانی ما همواره آماده است تا به سوالات شما درباره تمرینات، تجهیزات یا نحوه استفاده از خدمات پاسخ دهد. هر زمان که نیاز به راهنمایی داشتید، کافیست با ما در ارتباط باشید تا سریع و دقیق راهنمایی شوید</p>
                 <div class="author">
@@ -112,7 +125,7 @@
           <div style="text-align: right;" class="col-lg-5 align-self-center">
             <div class="section-heading">
               <h6 style="font-size: 17px;">معرفی</h6>
-              <h2>!چرا بادی لند؟</h2>
+              <h2 style="color: black !important;">!چرا بادی لند؟</h2>
               <p style="font-size: 18px;">
                 !به بادی‌لند خوش آمدید؛ خانه تخصصی ورزش و تناسب اندام <br /> بادی لند با تحربه چندین ساله خود در هدف ارتقاء سطح تمرین و تجربه ورزشی شما فعالیت میکند <br />
               </p>
@@ -220,7 +233,7 @@
       </div>
     </div>
 
-    <div class="section fun-facts">
+    <div class="section fun-facts" id="fun-facts">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -257,7 +270,7 @@
       </div>
     </div>
 
-    <section class="section courses" id="courses">
+    <section class="section courses" id="blogs">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">

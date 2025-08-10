@@ -88,9 +88,7 @@ figcaption {
   outline: 0;
   font-family: 'yekan', sans-serif;
 }
-
-
-
+ 
 .clearfix:after {
   content: ".";
   display: block;
@@ -139,9 +137,34 @@ body {
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+  background-color: transparent !important;
+
+
+  
 }
 
-a {
+
+body::before,
+.contact-us::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/static/assets/images/double-lined.png");
+  background-repeat: repeat;
+  opacity: 0.9; /* شدت نویز، می‌تونی کمتر یا بیشترش کنی */
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+
+
+a { 
   text-decoration: none !important;
 }
 
@@ -170,6 +193,84 @@ p {
 img {
   width: 100%;
   overflow: hidden;
+}
+
+
+/* 
+---------------------------------------------
+Dark Mode
+--------------------------------------------- 
+*/
+
+body.dark-mode.home-page {
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 20%, #404040 29%, #000000 100%);
+  color: #f1f1f1;
+
+}
+
+
+body.dark-mode:not(.home-page) {
+  background: linear-gradient(to bottom, #000000 0%, #000000 5%, #000000 20%, #000000 40%, #000000 100%);
+  color: #f1f1f1;
+}
+
+
+body.dark-mode::before {
+  content: "";
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/static/assets/images/double-lined.png");
+  background-repeat: repeat;
+  opacity: 6.9; 
+  z-index: 0;
+  pointer-events: none;
+}
+
+body.dark-mode .section-heading h2 {
+  color: #ffffff !important;
+}
+
+body.dark-mode  .col-lg-9 span {
+  color: #000000 !important;
+
+}
+
+body.dark-mode  .col-lg-9 span.category {
+  color: #7a6ad8 !important;
+
+}
+
+body.dark-mode .background-header {
+  background-color: #4a4a4a !important; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode footer {
+  background-color: #4a4a4a !important; 
+  box-shadow: 100px 100px 10000px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode .social-links .social-link i {
+  color: #353535; 
+}
+
+
+body.dark-mode .social-links .social-link:hover i {
+  color: inherit; 
+}
+
+body.dark-mode .step-bullet{
+  background-color: rgb(255, 255, 255);
+  color: #303030;
+}
+
+body.dark-mode .step-bullet.active {
+  background-color: #7a6ad8;
+  color: white;
+
 }
 
 /* 
@@ -764,7 +865,7 @@ Banner Style
   background-position: right bottom;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 170px 50px 100px 50px;
+  padding: 170px 100px 100px 50px;
 
 }
 
@@ -786,20 +887,17 @@ Banner Style
 }
 
 .main-banner .item-5 {
-  background-image: url("/static/assets/images/slider8.jpg");
+  background-image: url("/static/assets/images/slider11.png");
 }
 
 .main-banner .item {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  border-radius: 25px;
+  border-radius: 35px;
   height: 100%;
   margin-left: 70px;
-  padding: 180px 100px;
-  /* اگر خواستی فاصله محتوا از لبه‌ها رو زیاد کنی */
-
-
+  padding: 180px 22px;
 }
 
 .main-banner .item span.category {
@@ -814,11 +912,11 @@ Banner Style
 }
 
 .main-banner .item h2 {
-  font-size: 48px;
+  font-size: 46px;
   font-weight: 700;
   color: #fff;
   line-height: 70px;
-  width: 60%;
+  width: 100%;
   margin-bottom: 40px;
 }
 
@@ -892,7 +990,7 @@ Services Style
 .services .service-item .main-content {
   border-radius: 25px;
   padding: 80px 30px 50px 30px;
-  background-color: #f1f0fe;
+  background-color: #d3d3d3;
   margin-bottom: 30px;
   margin-right: 80px;
   transition: all .4s;
@@ -1115,9 +1213,11 @@ Facts Style
 
 .fun-facts {
   position: relative;
-  padding: 100px 0px 60px 0px;
+  padding: 40px 0px 0% 0px;
   overflow: hidden;
   margin-top: 100px;
+
+  
 }
 
 .fun-facts:before {
@@ -1128,7 +1228,7 @@ Facts Style
   z-index: -1;
   width: 95%;
   height: 100%;
-  background-color: #7a6ad8;
+  background-color: #7a6ad8 !important;
   content: '';
   border-top-right-radius: 500px;
   border-bottom-right-radius: 500px;
@@ -1252,18 +1352,20 @@ Testimonials Style
   position: relative;
   padding: 80px 0px;
   margin-top: 100px;
-}
+  overflow: hidden; 
 
-.testimonials:before {
+  
+}
+.testimonials::before {
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
-  z-index: -1;
   width: 65%;
   height: 100%;
-  background-color: #f1f0fe;
-  content: '';
+  background-color: #cbcbcb;
+  z-index: -1;
   border-top-left-radius: 500px;
   border-bottom-left-radius: 500px;
 }
@@ -1272,16 +1374,19 @@ Testimonials Style
   margin-bottom: 0px;
   margin-left: 60px;
   vertical-align: middle;
+  
 }
 
 .testimonials .section-heading p {
   margin-top: 50px;
+  
 }
 
 .testimonials .item {
   background-color: #7a6ad8;
   border-radius: 25px;
   padding: 80px;
+  
 }
 
 .testimonials .item p {
@@ -1305,6 +1410,7 @@ Testimonials Style
   margin-top: 20px;
   font-size: 15px;
   color: #fff;
+  
 }
 
 .testimonials .item h4 {
@@ -1320,6 +1426,7 @@ Testimonials Style
   transform: translateY(-5px);
   right: -25px;
   text-align: right;
+  
 }
 
 .testimonials .owl-nav .owl-prev i,
@@ -1335,6 +1442,7 @@ Testimonials Style
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.10);
   opacity: 1;
   transition: all .3s;
+  
 }
 
 .testimonials .owl-nav .owl-prev i {
@@ -1360,12 +1468,13 @@ Events Style
 }
 
 .events .item {
-  background-color: #f1f0fe;
+  background-color: rgba(211, 211, 211, 0.6); 
   border-radius: 25px;
   position: relative;
   padding: 40px;
   margin-bottom: 96px;
 }
+
 
 .events .item .image {
   position: relative;
@@ -1460,7 +1569,7 @@ Contact Style
   z-index: -1;
   width: 65%;
   height: 100%;
-  background-color: #f1f0fe;
+  background-color: #e6e6e6;
   content: '';
   border-top-right-radius: 500px;
   border-bottom-right-radius: 500px;
@@ -1685,7 +1794,10 @@ footer {
   padding: 10px 0;
   /* فاصله کمی بالا/پایین */
   height: auto;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
+
+
 
 footer p {
   text-align: center;

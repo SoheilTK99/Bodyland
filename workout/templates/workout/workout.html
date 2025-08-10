@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block body_class %}workout-page{% endblock %}
 
 {% block content %}
   <script>
@@ -7,7 +8,8 @@
   </script>
 
   <style>
-    body {
+
+    .step-progress-bar {
       padding-top: 150px;
     }
     
@@ -29,6 +31,7 @@
       cursor: pointer;
       border: 1px solid #ddd;
       transition: 0.3s ease;
+      color: black;
     }
     
     label:hover {
@@ -40,7 +43,7 @@
       margin-left: 10px;
     }
     
-    button {
+    .step button {
       font-family: 'Vazirmatn', sans-serif;
       margin-top: 20px;
       background-color: #7a6ad8;
@@ -73,13 +76,15 @@
       opacity: 0;
       transform: translateY(30px);
       transition: none;
-      background: rgb(243, 243, 251);
+      background: rgba(255, 255, 255, 1);
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       margin: 0 auto 40px;
       max-width: 2000px;
       width: 88%;
+
+      
     }
 
     .step.active {
@@ -91,9 +96,6 @@
       text-align: right;
       direction: rtl;
     }
-
-
-
 
     .anatomy-wrapper {
       flex-wrap: wrap;
@@ -137,7 +139,7 @@
     }
     
     .bodymap:hover path {
-      fill: #e74c3c !important; /* رنگ قرمز هنگام هاور */
+      fill: #e74c3c !important; 
     }
     .anatomy-wrapper {
       display: flex;
@@ -150,11 +152,14 @@
 
     .anatomy-front,
     .anatomy-back {
-      width: 45%; /* یا اندازه دلخواه */
+      width: 45%;
       max-width: 350px;
+      
+      
+
     }
 
-    /* ظاهر اصلی کارت ابزار */
+   
     #step4 label {
       display: flex;
       flex-direction: column;
@@ -178,7 +183,7 @@
       display: none;
     }
 
-    /* افکت هاور */
+  
     #step4 label:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
@@ -205,7 +210,7 @@
     }
 
     .selected-muscle {
-      fill: #e63946 !important; /* رنگ قرمز پررنگ */
+      fill: #e63946 !important; 
       stroke: black;
       stroke-width: 0.5;
       transition: all 0.2s ease-in-out;
@@ -225,10 +230,10 @@
     .step-bullet {
       width: 30px;
       height: 30px;
-      background-color: #ccc;
+      background-color: #dcdcdcff;
       border-radius: 50%;
-      color: white;
-      font-weight: bold;
+      color:black ;
+      font-weight: 800;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -240,13 +245,14 @@
 
     .step-bullet.active {
       background-color: #7a6ad8;
+      color: white;
 
     }
 
     .step-line {
       flex-grow: 1;
       height: 3px;
-      background-color: #ccc;
+      background-color: #dcdcdcff;
       margin: 0 0px;
       z-index: 1;
       transition: background-color 0.3s ease;
@@ -263,20 +269,18 @@
   </style>
 
   <div class="step-progress-bar">
-  <div class="step-bullet active">1</div>
-  <div class="step-line"></div>
-  <div class="step-bullet">2</div>
-  <div class="step-line"></div>
-  <div class="step-bullet">3</div>
-  <div class="step-line"></div>
-  <div class="step-bullet">4</div>
-  <div class="step-line"></div>
-  <div class="step-bullet">5</div>
-</div>
-
+    <div class="step-bullet active">1</div>
+    <div class="step-line"></div>
+    <div class="step-bullet">2</div>
+    <div class="step-line"></div>
+    <div class="step-bullet">3</div>
+    <div class="step-line"></div>
+    <div class="step-bullet">4</div>
+    <div class="step-line"></div>
+    <div class="step-bullet">5</div>
+  </div>
 
   <div id="step-container" style="position: relative; min-height: 500px;">
-
     <div id="step1" class="step active">
       <h3>جنسیت خود را انتخاب کنید:</h3>
       <label><input type="radio" name="gender" value="male" />مرد</label><br />
@@ -294,7 +298,7 @@
     </div>
 
     <div id="step3" class="step">
-      <h3> عضلات هدف خود را انتخاب کنید: </h3>
+      <h3>عضلات هدف خود را انتخاب کنید:</h3>
       <div id="male-anatomy" style="display: block;">
         <div class="anatomy-wrapper">
           <div class="anatomy-front">
@@ -721,63 +725,58 @@
       <button type="button" onclick="goBackToStep2()">بازگشت به انتخاب هدف تمرین</button>
     </div>
 
-
     <div id="step4" class="step">
       <h3>ابزار تمرینی خود را انتخاب کنید:</h3>
       <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-
-        
         <label>
-          <img src="{% static "assets/images/bodyweight.png" %}" alt="وزن بدن" width="40" />
-          <input type="checkbox" name="equipment" value="bodyweight" /> وزن بدن
+          <img src="{% static 'assets/images/bodyweight.png' %}" alt="وزن بدن" width="40" />
+          <input type="checkbox" name="equipment" value="bodyweight" />وزن بدن
         </label>
 
         <label>
-          <img src="{% static "assets/images/dumbbells.png" %}" alt="دمبل" width="40" />
-          <input type="checkbox" name="equipment" value="dumbbells" /> دمبل
+          <img src="{% static 'assets/images/dumbbells.png' %}" alt="دمبل" width="40" />
+          <input type="checkbox" name="equipment" value="dumbbells" />دمبل
         </label>
 
         <label>
-          <img src="{% static "assets/images/halter.png" %}" alt="هالتر و صفحه" width="40" />
-          <input type="checkbox" name="equipment" value="halter and plate" /> هالتر و صفحه
+          <img src="{% static 'assets/images/halter.png' %}" alt="هالتر و صفحه" width="40" />
+          <input type="checkbox" name="equipment" value="halter and plate" />هالتر و صفحه
         </label>
 
         <label>
-          <img src="{% static "assets/images/machine.png" %}" alt="دستگاه" width="40" />
-          <input type="checkbox" name="equipment" value="machine" /> دستگاه
+          <img src="{% static 'assets/images/machine.png' %}" alt="دستگاه" width="40" />
+          <input type="checkbox" name="equipment" value="machine" />دستگاه
         </label>
 
         <label>
-          <img src="{% static "assets/images/cable.png" %}" alt="سیمکش" width="40" />
-          <input type="checkbox" name="equipment" value="cable" /> سیمکش
+          <img src="{% static 'assets/images/cable.png' %}" alt="سیمکش" width="40" />
+          <input type="checkbox" name="equipment" value="cable" />سیمکش
         </label>
 
         <label>
-          <img src="{% static "assets/images/smith.png" %}" alt="اسمیت" width="40" />
-          <input type="checkbox" name="equipment" value="smith" /> اسمیت
+          <img src="{% static 'assets/images/smith.png' %}" alt="اسمیت" width="40" />
+          <input type="checkbox" name="equipment" value="smith" />اسمیت
         </label>
 
         <label>
-          <img src="{% static "assets/images/band.png" %}" alt="کش" width="40" />
-          <input type="checkbox" name="equipment" value="band" /> کش ورزشی
+          <img src="{% static 'assets/images/band.png' %}" alt="کش" width="40" />
+          <input type="checkbox" name="equipment" value="band" />کش ورزشی
         </label>
 
         <label>
-          <img src="{% static "assets/images/ball.png" %}" alt="توپ" width="40" />
-          <input type="checkbox" name="equipment" value="medicine ball" /> توپ
+          <img src="{% static 'assets/images/ball.png' %}" alt="توپ" width="40" />
+          <input type="checkbox" name="equipment" value="medicine ball" />توپ
         </label>
 
         <label>
-          <img src="{% static "assets/images/kettlebell.png" %}" alt="دمبل روسی" width="40" />
-          <input type="checkbox" name="equipment" value="kettlebells" /> دمبل روسی
+          <img src="{% static 'assets/images/kettlebell.png' %}" alt="دمبل روسی" width="40" />
+          <input type="checkbox" name="equipment" value="kettlebells" />دمبل روسی
         </label>
-
       </div>
 
       <br />
       <button type="button" onclick="submitWorkoutRequest()">نمایش تمرینات</button>
       <button type="button" onclick="goBackToStep3()">بازگشت به انتخاب عضله</button>
-
     </div>
 
     <div id="step5" class="step">
@@ -785,13 +784,7 @@
       <div id="workout-list"></div>
       <button onclick="goBack()">بازگشت</button>
     </div>
-  </div> 
-
-
-
-
-
-
+  </div>
 
   <script>
 
