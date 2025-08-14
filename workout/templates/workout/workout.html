@@ -7,12 +7,12 @@
     const userIsLoggedIn = {{ is_logged_in|yesno:"true,false" }};
   </script>
 
-  <style>
+  <Style>
 
     .step-progress-bar {
       padding-top: 150px;
     }
-    
+
     h3 {
       font-family: 'Vazirmatn', sans-serif;
       font-weight: 100;
@@ -21,7 +21,7 @@
       color: #2c3e50;
       padding-top: 0px;
     }
-    
+
     label {
       display: block;
       margin-bottom: 10px;
@@ -33,16 +33,16 @@
       transition: 0.3s ease;
       color: black;
     }
-    
+
     label:hover {
       background: #f0f3f7;
       border-color: #ccc;
     }
-    
+
     input[type='radio'] {
       margin-left: 10px;
     }
-    
+
     .step button {
       font-family: 'Vazirmatn', sans-serif;
       margin-top: 20px;
@@ -55,11 +55,11 @@
       cursor: pointer;
       transition: 0.3s ease;
     }
-    
+
     button:hover {
       background-color: #2980b9;
     }
-    
+
     @keyframes fadeSlideIn {
       0% {
         opacity: 0;
@@ -76,15 +76,13 @@
       opacity: 0;
       transform: translateY(30px);
       transition: none;
-      background: rgba(255, 255, 255, 1);
+      background: rgba(241, 241, 241, 1);
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       margin: 0 auto 40px;
       max-width: 2000px;
       width: 88%;
-
-      
     }
 
     .step.active {
@@ -104,43 +102,180 @@
       overflow: visible;
     }
 
-    .workout-card {
-      background-color: #fff;
-      border: 1px solid #e0e0e0;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    }
-    
-    .workout-card h4 {
-      margin-top: 0;
-      color: #34495e;
-    }
-    
-    .workout-card p {
-      margin-bottom: 10px;
-    }
-    
-    video {
-      border-radius: 10px;
-      margin-top: 10px;
-      max-width: 100%;
-    }
-    
     #workout-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
       max-width: 800px;
-      margin: 0 auto;
+      margin: 30px auto;
+      padding: 0 20px;
+      text-align: right;
+      direction: rtl;
     }
-    
+
+    .workout-card {
+      background-color: #ffffff;
+      border: none;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Vazirmatn', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .workout-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .workout-card h4 {
+      font-family: 'Vazirmatn', sans-serif;
+      font-weight: 800;
+      font-size: 24px;
+      color: #34495e;
+      margin-top: 0;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #7a6ad8;
+      padding-bottom: 12px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .workout-card video {
+      width: 100%;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      margin-bottom: 25px;
+    }
+
+    .workout-card video:hover {
+      transform: scale(1.01);
+    }
+
+    /* استایل برای کانتینر مراحل */
+    .workout-stages {
+      /* border-bottom: 1px dashed #e0e0e0;  این خط حذف شد */
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    /* استایل برای هر آیتم مرحله (شماره + متن) */
+    .stage-item {
+      display: flex;
+      align-items: flex-start; /* محتوا از بالا هم‌تراز شود */
+      margin-bottom: 15px; /* فاصله بین مراحل */
+      direction: rtl; /* جهت راست به چپ */
+      text-align: right; /* متن از راست شروع شود */
+    }
+
+    /* استایل برای شماره دایره‌ای مرحله */
+    .stage-number {
+      background-color: #b12429ff; /* رنگ بنفش */
+      color: white;
+      border-radius: 50%; /* دایره‌ای */
+      width: 30px; /* اندازه دایره */
+      height: 30px; /* اندازه دایره */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Vazirmatn', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0; /* از کوچک شدن جلوگیری می‌کند */
+      margin-left: 15px; /* فاصله از متن مرحله */
+      box-shadow: 0 2px 8px rgba(122, 106, 216, 0.4); /* سایه ملایم */
+    }
+
+    /* استایل برای متن مرحله */
+    .stage-text {
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #555;
+      margin: 0; /* حذف margin پیش‌فرض p */
+      flex-grow: 1; /* اجازه می‌دهد فضای باقی‌مانده را اشغال کند */
+    }
+
+    /* استایل برای توضیحات تمرین (برای اطمینان از اعمال استایل صحیح) */
+    .workout-card p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 0;
+      width: 100%;
+    }
+
+    #step5 button {
+      font-family: 'Vazirmatn', sans-serif;
+      margin-top: 40px;
+      background-color: #e74c3c;
+      color: white;
+      padding: 14px 35px;
+      font-size: 17px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+    }
+
+    #step5 button:hover {
+      background-color: #c0392b;
+
+    }
+
+    #workout-list p.not-found {
+      font-size: 20px;
+      color: #95a5a6;
+      text-align: center;
+      grid-column: 1 / -1;
+      padding: 50px 0;
+      background-color: #f8f8f8;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    @media (max-width: 768px) {
+      #workout-list {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+      }
+
+      .workout-card {
+        padding: 20px;
+      }
+
+      .workout-card h4 {
+        font-size: 20px;
+      }
+
+      .workout-card video {
+        max-height: 200px;
+      }
+
+      #step5 button {
+        padding: 12px 25px;
+        font-size: 16px;
+      }
+    }
+
     .bodymap {
       cursor: pointer;
       transition: fill 0.3s;
     }
-    
+
     .bodymap:hover path {
-      fill: #e74c3c !important; 
+      fill: #e74c3c !important;
     }
+
     .anatomy-wrapper {
       display: flex;
       justify-content: center;
@@ -154,12 +289,8 @@
     .anatomy-back {
       width: 45%;
       max-width: 350px;
-      
-      
-
     }
 
-   
     #step4 label {
       display: flex;
       flex-direction: column;
@@ -178,18 +309,15 @@
       position: relative;
     }
 
-    /* مخفی‌کردن چک‌باکس */
     #step4 label input[type="checkbox"] {
       display: none;
     }
 
-  
     #step4 label:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
-    /* عکس ابزار */
     #step4 label img {
       width: 60px;
       height: 60px;
@@ -197,20 +325,18 @@
       margin-bottom: 10px;
     }
 
-    /* وقتی چک‌باکس انتخاب شده، رنگ کارت تغییر کنه */
     #step4 label input[type="checkbox"]:checked + span {
       background-color: #7b2cbf;
       color: #fff;
     }
 
-    /* تغییر کل کارت با استفاده از :has() در مرورگرهای جدید */
     #step4 label:has(input[type="checkbox"]:checked) {
       background-color: #7b2cbf;
       color: #fff;
     }
 
     .selected-muscle {
-      fill: #e63946 !important; 
+      fill: #e63946 !important;
       stroke: black;
       stroke-width: 0.5;
       transition: all 0.2s ease-in-out;
@@ -240,13 +366,11 @@
       position: relative;
       z-index: 2;
       transition: background-color 0.3s ease;
-
     }
 
     .step-bullet.active {
       background-color: #7a6ad8;
       color: white;
-
     }
 
     .step-line {
@@ -256,7 +380,6 @@
       margin: 0 0px;
       z-index: 1;
       transition: background-color 0.3s ease;
-      
     }
 
     .step-line.active {
@@ -264,9 +387,7 @@
     }
 
 
-
-
-  </style>
+  </Style>
 
   <div class="step-progress-bar">
     <div class="step-bullet active">1</div>
@@ -998,48 +1119,71 @@
     
     // نمایش تمرینات در مرحله 5
     function showWorkouts(workouts, muscleName) {
-      document.querySelectorAll('.step').forEach((el) => el.classList.remove('active'))
-      document.getElementById('step5').classList.add('active')
-      currentStep = 5
+      document.querySelectorAll('.step').forEach((el) => el.classList.remove('active'));
+      document.getElementById('step5').classList.add('active');
+      currentStep = 5;
       updateProgressBar();
-    
-      const list = document.getElementById('workout-list')
-      list.innerHTML = ''
-    
-      const title = document.createElement('h3')
-      title.textContent = `تمرینات برای عضله ${muscleName}:`
-      list.appendChild(title)
-    
-      if (workouts.length === 0) {
-        const msg = document.createElement('p')
-        msg.textContent = 'هیچ تمرینی یافت نشد.'
-        list.appendChild(msg)
-        return
-      }
-    
-      workouts.forEach((item) => {
-        const card = document.createElement('div')
-        card.className = 'workout-card'
-    
-        const h4 = document.createElement('h4')
-        h4.textContent = item.title
-        card.appendChild(h4)
-    
-        const p = document.createElement('p')
-        p.textContent = item.description
-        card.appendChild(p)
-    
-        if (item.video_url) {
-          const video = document.createElement('video')
-          video.setAttribute('controls', '')
-          video.src = item.video_url
-          card.appendChild(video)
-        }
-    
-        list.appendChild(card)
-      })
-    }
 
+      const list = document.getElementById('workout-list');
+      list.innerHTML = '';
+
+      if (workouts.length === 0) {
+        const msg = document.createElement('p');
+        msg.textContent = 'هیچ تمرینی یافت نشد.';
+        msg.className = 'not-found';
+        list.appendChild(msg);
+        return;
+      }
+
+      workouts.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'workout-card';
+
+        const h4 = document.createElement('h4');
+        h4.textContent = item.title;
+        card.appendChild(h4);
+
+        // افزودن ویدیو در ابتدا
+        if (item.video_url) {
+          const video = document.createElement('video');
+          video.setAttribute('controls', '');
+          video.src = item.video_url;
+          card.appendChild(video);
+        }
+
+        // افزودن مراحل 1 تا 5 با استایل جدید
+        const stagesContainer = document.createElement('div');
+        stagesContainer.className = 'workout-stages';
+        
+        for (let i = 1; i <= 5; i++) {
+          const stageKey = `stage${i}`;
+          if (item[stageKey]) {
+            const stageItem = document.createElement('div');
+            stageItem.className = 'stage-item';
+
+            const stageNumber = document.createElement('span');
+            stageNumber.className = 'stage-number';
+            stageNumber.textContent = i; // فقط شماره مرحله
+
+            const stageText = document.createElement('p');
+            stageText.className = 'stage-text';
+            stageText.textContent = item[stageKey]; // متن مرحله
+
+            stageItem.appendChild(stageNumber);
+            stageItem.appendChild(stageText);
+            stagesContainer.appendChild(stageItem);
+          }
+        }
+        card.appendChild(stagesContainer);
+        
+        // افزودن توضیحات بعد از مراحل
+        const p = document.createElement('p');
+        p.innerHTML = `<strong>توضیحات:</strong> ${item.discription}`;
+        card.appendChild(p);
+        
+        list.appendChild(card);
+      });
+    }
     function goToStep4() {
       if (selectedMuscles.length === 0) {
         alert("لطفاً حداقل یک عضله انتخاب کنید.");
@@ -1128,4 +1272,5 @@
 
 
   </script>
+  
 {% endblock %}

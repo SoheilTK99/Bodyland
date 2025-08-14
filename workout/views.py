@@ -29,7 +29,12 @@ def get_workouts_ajax(request):
         for w in workouts:
             data.append({
                 'title': w.title,
-                'description': w.discription,
+                'discription': w.discription,
+                'stage1': w.stage1,  # اضافه شده
+                'stage2': w.stage2,  # اضافه شده
+                'stage3': w.stage3,  # اضافه شده
+                'stage4': w.stage4,  # اضافه شده
+                'stage5': w.stage5,  # اضافه شده
                 'muscle': w.get_muscle_display(),
                 'video_url': w.video.url if w.video else None
             })
@@ -37,7 +42,6 @@ def get_workouts_ajax(request):
         return JsonResponse({'results': data})
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
-
 
 
 def workout_list(request):
@@ -48,4 +52,3 @@ def workout_list(request):
         'username': request.user.username if request.user.is_authenticated else ''
     }
     return render(request, "workout/workout.html", context)
-

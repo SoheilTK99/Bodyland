@@ -41,7 +41,12 @@ class Workout (models.Model):
     )
 
     title = models.CharField((" نام تمرین "),max_length=250)
-    discription = models.TextField(("توضیحات"))
+    discription = models.TextField((" توضیحات  "), null=True, blank=True)
+    stage1 = models.TextField(("مرحله 1 "), null=True, blank=True)
+    stage2 = models.TextField(("مرحله 2 "), null=True, blank=True)
+    stage3 = models.TextField(("مرحله 3 "), null=True, blank=True)
+    stage4 = models.TextField(("مرحله 4 "), null=True, blank=True)
+    stage5 = models.TextField(("مرحله 5 "), null=True, blank=True)
     muscle = models.CharField((" عضله هدف "),max_length=20, choices=MUSCLE_TYPE, default='shoulder')
     categorey = models.CharField((" دسته بندی تمرین "),max_length=20, choices=CATEGOREY_TYPE, default='hypertrophy')
     tools = models.CharField(("ابزار ها"), choices=TOOLS_TYPE, default='bodyweight')

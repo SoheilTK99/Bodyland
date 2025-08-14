@@ -5,6 +5,19 @@
       <div class="col-12">
         <nav class="main-nav">
           <div class="nav-left">
+            {% if is_logged_in %}
+              <li class="nav-item dropdown" style=" font-size: 25px;" >
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">{{ username }}</a>
+                <div class="dropdown-menu text-right" aria-labelledby="dropdown-article" style="direction: rtl;">
+                  <a class="dropdown-item" href="{% url 'account:logout' %}">خروج</a>
+                </div>
+              </li>
+            {% else %}
+              <li>
+                <a href="{% url 'account:login' %}?next={{ request.path }}" class="active" ><img src="/static/assets/images/user.png" alt="User-logo" style="width: 38px; padding-top: 4px;"> </a>
+              </li>
+            {% endif %}
+            <img src="/static/assets/images/line.png" alt="line" style="width: 36px;">
             <button id="themeToggle" style="background: none; border: none; cursor: pointer;">
               <img id="moonIcon" src="/static/assets/images/dark-mode.png" alt="Dark Mode" style="width: 32px; display: inline;" />
               <img id="sunIcon" src="/static/assets/images/sun.png" alt="Light Mode" style="width: 32px; display: none;" />
@@ -31,23 +44,11 @@
               <li>
                 <a href="/home/#top" class="smart-scroll" data-target="top">خانه</a>
               </li>
-              {% if is_logged_in %}
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">{{ username }}</a>
-                  <div class="dropdown-menu text-right" aria-labelledby="dropdown-article" style="direction: rtl;">
-                    <a class="dropdown-item" href="{% url 'account:logout' %}">خروج</a>
-                  </div>
-                </li>
-              {% else %}
-                <li>
-                  <a href="{% url 'account:login' %}?next={{ request.path }}" class="active">حساب کاربری</a>
-                </li>
-              {% endif %}
             </ul>
           </div>
 
           <div class="nav-right">
-            <a href="/home/" class="logo"><img src="/static/assets/images/logo.png" alt="Logo" /></a>
+            <a href="/home/" class="logo"><img src="/static/assets/images/logo.png" alt="Logo"  style="padding-bottom: 25px; width:100%;"/></a>
           </div>
         </nav>
       </div>
@@ -57,26 +58,24 @@
 
 <style>
   .main-nav {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    height: 100px;
-    gap: 20px;
-    padding-left: 50px;
+      display: flex;
+      justify-content: space-between; /* آیتم‌ها رو به دو انتهای مخالف می‌فرسته */
+      align-items: center;
+      height: 100px;
   }
-  
-  /* سرچ سمت چپ */
+
   .nav-left {
-    display: flex;
-    justify-content: flex-start;
-    padding-bottom: 12px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center; /* آیتم‌ها رو در راستای عمودی وسط قرار می‌ده */
+      gap: 0px; /* فاصله بین آیتم‌ها رو تنظیم می‌کنه */
   }
   
   /* منو دقیقا وسط */
   .nav-center {
     padding-top: 0px;
     padding-bottom: 35px;
-    padding-left: 70px;
+    padding-left: 260px;
     
   }
   
@@ -94,13 +93,22 @@
     align-items: center;
   }
   
-  /* لوگو سمت راست */
   .nav-right {
-    display: flex;
-    justify-content: flex-end;
-    margin-left: 110px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center; /* آیتم‌ها رو در راستای عمودی وسط قرار می‌ده */
+      gap: 20px; /* فاصله بین آیتم‌ها رو تنظیم می‌کنه */
   }
   
+  /* برای اینکه منو و لوگو کنار هم قرار بگیرن، باید اون‌ها رو در یک باکس قرار بدید */
+  .nav-right .nav {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  }
+
   .logo img {
     height: 80px;
     object-fit: contain;
@@ -174,7 +182,7 @@
     color: black !important;
     border-radius: 25px;
     text-align: center;
-    padding: 1px 20px !important;
+    padding: 3px 20px 10px 20px !important;
     margin: 0 auto;
     width: fit-content;
   }
