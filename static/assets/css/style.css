@@ -282,6 +282,12 @@ body.dark-mode .accordion-button:not(.collapsed) {
 body.dark-mode .accordion-item {
   background-color: #f1f0fe !important; 
 }
+
+body.dark-mode .rule-box h1,
+body.dark-mode .rule-box h6 {
+  color: #FFFFFF;
+}
+
 /* 
 ---------------------------------------------
 Global Styles

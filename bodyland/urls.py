@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path , include
 from django.shortcuts import redirect
+from django.views.generic import TemplateView
 
 
 urlpatterns = [
@@ -30,6 +31,8 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('product/', include('product.urls')),
     path('course/', include('course.urls')),
+    path('rules/', TemplateView.as_view(template_name="rules.html"), name="rules"),
+
 
 
 ]

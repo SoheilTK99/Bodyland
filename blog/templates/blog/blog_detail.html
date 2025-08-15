@@ -4,103 +4,111 @@
 
 {% block content %}
 <style>
-  .blog-detail-container {
-    max-width: 1000px;
-    margin: 120px auto;
-    background: linear-gradient(145deg, #ffffff, #f5f5f5);
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    font-family: 'Vazirmatn', sans-serif;
-    direction: rtl;
-    text-align: right;
-    padding: 20px;
-    transition: all 0.3s ease;
-  }
+    /* استایل اصلی کانتینر */
+    .blog-detail-container {
+        max-width: 1300px;
+        margin: 120px auto;
+        background: linear-gradient(145deg, #ffffff, #cacdf2ff);
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        font-family: 'Vazirmatn', sans-serif;
+        direction: rtl;
+        text-align: right;
+        padding: 35px;
+        display: flow-root;
+    }
 
-  .blog-detail-title {
-    font-size: 36px;
-    color: #2c3e50;
-    margin-bottom: 15px;
-    font-weight: 800;
-    border-right: 5px solid #6c5ce7;
-    padding-right: 10px;
-  }
+    /* استایل‌های مربوط به عکس مقاله */
+    .blog-detail-image {
+        float: left; /* عکس در سمت چپ قرار می‌گیرد */
+        width: 45%;   
+        margin-right: 30px; /* <<< تغییر اصلی: فاصله به سمت راست منتقل شد */
+        margin-left: 0;   /* فاصله سمت چپ صفر می‌شود */
+        margin-bottom: 15px; 
+        margin-top: 31px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
 
-  .blog-detail-meta {
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 25px;
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+    .blog-detail-image:hover {
+        transform: scale(1.03);
+    }
 
-  .blog-detail-meta span {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-  }
+    /* بقیه استایل‌ها بدون تغییر */
+    .blog-detail-title {
+        font-size: 36px;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-weight: 800;
+        border-right: 5px solid #6c5ce7;
+        padding-right: 10px;
+    }
+    .blog-detail-body {
+        font-size: 18px;
+        line-height: 2.2;
+        color: #444;
+        text-align: justify;
+    }
+    .blog-detail-meta {
+        font-size: 14px;
+        color: #888;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    .blog-detail-meta span {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .blog-detail-meta span i {
+        color: #6c5ce7;
+    }
+    .blog-detail-category {
+        display: inline-block;
+        margin-top: 30px;
+        background: #6c5ce7;
+        color: #fff;
+        padding: 6px 20px;
+        border-radius: 50px;
+        font-size: 13px;
+        box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        transition: background 0.3s ease;
+    }
+    .blog-detail-category:hover {
+        background: #4834d4;
+    }
 
-  .blog-detail-meta span i {
-    color: #6c5ce7;
-  }
-
-  .blog-detail-image {
-    width: 100%;
-    border-radius: 15px;
-    margin-bottom: 25px;
-    object-fit: cover;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
-  }
-
-  .blog-detail-image:hover {
-    transform: scale(1.03);
-  }
-
-  .blog-detail-body {
-    font-size: 18px;
-    line-height: 2.2;
-    color: #444;
-    text-align: justify;
-  }
-
-  .blog-detail-category {
-    display: inline-block;
-    margin-top: 30px;
-    background: #6c5ce7;
-    color: #fff;
-    padding: 6px 20px;
-    border-radius: 50px;
-    font-size: 13px;
-    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
-    transition: background 0.3s ease;
-  }
-
-  .blog-detail-category:hover {
-    background: #4834d4;
-  }
+    /* استایل واکنش‌گرا برای موبایل */
+    @media (max-width: 768px) {
+        .blog-detail-image {
+            float: none;
+            width: 100%;
+            margin-right: 0; /* فاصله راست را در موبایل حذف می‌کنیم */
+            margin-left: 0; 
+            margin-bottom: 25px;
+        }
+    }
 </style>
 
 <div class="blog-detail-container">
-  <h1 class="blog-detail-title">{{ post.title }}</h1>
-  <br></br>
 
+    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog-detail-image">
 
-  <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog-detail-image">
-  
-  <div class="blog-detail-body">
-    {{ post.body }}
-  </div>
-    <div class="blog-detail-meta" style="display: flex; flex-direction: column; gap: 5px; align-items: flex-end; text-align: right; direction: rtl;">
-    <span style="text-align: left; direction: ltr;"><i class="fa fa-user"></i> {{ post.author }}</span>
-    <span style="text-align: left; direction: ltr;"><i class="fa fa-calendar"></i> {{ post.published_at|date:"Y/m/d" }}</span>
-    </div>  
+    <h1 class="blog-detail-title">{{ post.title }}</h1>
+    
+    <div class="blog-detail-body">
+        {{ post.body|safe }}
+    </div>
 
-  <div class="blog-detail-category">
-    {{ post.get_category_display }}
-  </div>
+    <div class="blog-detail-meta">
+        <span><i class="fa fa-user"></i> {{ post.author }}</span>
+        <span style="margin-right: 20px;"><i class="fa fa-calendar"></i> {{ post.published_at|date:"Y/m/d" }}</span>
+    </div> 
+
+    <div class="blog-detail-category">
+        {{ post.get_category_display }}
+    </div>
+
 </div>
 {% endblock %}

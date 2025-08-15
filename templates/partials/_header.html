@@ -33,7 +33,7 @@
           <div class="nav-center">
             <ul class="nav">
               <li>
-                <a href="#fun-facts" class="smart-scroll" data-target="fun-facts">قوانین و مقررات</a>
+                <a href="/rules/" class="smart-scroll {% if '/product/' in request.path %}active{% endif %}"  data-target="rule">قوانین و مقررات</a>
               </li>
               <li>
                 <a href="/home/#blogs" class="smart-scroll" data-target="blogs">مجله</a>
@@ -70,8 +70,9 @@
   .nav-left {
       display: flex;
       justify-content: flex-start;
-      align-items: center; /* آیتم‌ها رو در راستای عمودی وسط قرار می‌ده */
-      gap: 0px; /* فاصله بین آیتم‌ها رو تنظیم می‌کنه */
+      align-items: center; 
+      gap: 0px; 
+      margin-bottom: 20px;
   }
   
   /* منو دقیقا وسط */
