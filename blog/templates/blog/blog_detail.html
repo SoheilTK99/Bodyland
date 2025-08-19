@@ -4,7 +4,6 @@
 
 {% block content %}
 <style>
-    /* استایل اصلی کانتینر */
     .blog-detail-container {
         max-width: 1300px;
         margin: 120px auto;
@@ -18,12 +17,11 @@
         display: flow-root;
     }
 
-    /* استایل‌های مربوط به عکس مقاله */
     .blog-detail-image {
-        float: left; /* عکس در سمت چپ قرار می‌گیرد */
+        float: left;
         width: 45%;   
-        margin-right: 30px; /* <<< تغییر اصلی: فاصله به سمت راست منتقل شد */
-        margin-left: 0;   /* فاصله سمت چپ صفر می‌شود */
+        margin-right: 30px;
+        margin-left: 0;
         margin-bottom: 15px; 
         margin-top: 31px;
         border-radius: 15px;
@@ -35,7 +33,6 @@
         transform: scale(1.03);
     }
 
-    /* بقیه استایل‌ها بدون تغییر */
     .blog-detail-title {
         font-size: 36px;
         color: #2c3e50;
@@ -45,24 +42,42 @@
         padding-right: 10px;
     }
     .blog-detail-body {
-        font-size: 18px;
+        font-size: 18px !important;
         line-height: 2.2;
         color: #444;
         text-align: justify;
     }
+
+    .blog-detail-body p {
+        font-size: 18px;
+        line-height: 2.2;
+        color: #444;
+        margin-bottom: 20px;
+    }     
     .blog-detail-meta {
-        font-size: 14px;
-        color: #888;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
         margin-top: 25px;
         margin-bottom: 25px;
+        font-size: 14px;
+        color: #888;
     }
+
     .blog-detail-meta span {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        gap: 5px;
+        direction: ltr;
+        margin-bottom: 10px;
     }
+
+    .blog-detail-meta span:last-child {
+        margin-bottom: 0;
+    }
+
     .blog-detail-meta span i {
         color: #6c5ce7;
+        margin-right: 8px;
     }
     .blog-detail-category {
         display: inline-block;
@@ -79,12 +94,11 @@
         background: #4834d4;
     }
 
-    /* استایل واکنش‌گرا برای موبایل */
     @media (max-width: 768px) {
         .blog-detail-image {
             float: none;
             width: 100%;
-            margin-right: 0; /* فاصله راست را در موبایل حذف می‌کنیم */
+            margin-right: 0;
             margin-left: 0; 
             margin-bottom: 25px;
         }
@@ -98,7 +112,7 @@
     <h1 class="blog-detail-title">{{ post.title }}</h1>
     
     <div class="blog-detail-body">
-        {{ post.body|safe }}
+        {{ post.body|linebreaks }}
     </div>
 
     <div class="blog-detail-meta">

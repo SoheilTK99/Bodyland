@@ -1259,7 +1259,7 @@ Courses Style
 }
 
 .events_item {
-  background-color: #f0fef5;
+  background-color: #f0fafe;
   border-radius: 25px;
   margin-bottom: 30px;
   position: relative;
@@ -1285,7 +1285,7 @@ Courses Style
 }
 
 .events_item:hover .down-content h4 {
-  color: #7a6ad8;
+  color: #fea02c;
 }
 
 .events_item:hover .thumb span.price {
@@ -1880,7 +1880,6 @@ footer {
   min-height: unset;
   border-radius: 50px 50px 0px 0px;
   padding: 10px 0;
-  /* فاصله کمی بالا/پایین */
   height: auto;
   transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
@@ -1893,7 +1892,6 @@ footer p {
   color: #fff;
   font-weight: 400;
   margin: 0;
-  /* فاصله اضافی حذف */
   padding: 0;
 }
 
@@ -1926,9 +1924,7 @@ footer::before {
 
 footer .copyright p {
   margin: 2px 0;
-  /* 👈 فاصله بین دو پاراگراف خیلی کم */
   line-height: 1.4;
-  /* 👈 فاصله خطی معقول بین دو متن */
   font-size: 15px;
   font-weight: 100;
 }

@@ -7,7 +7,7 @@
           <div class="nav-left">
             {% if is_logged_in %}
               <li class="nav-item dropdown" style=" font-size: 25px;" >
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">{{ username }}</a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"><img src="/static/assets/images/logged-in2.png" alt="" style="width: 36px; padding-top: 4px;"></a>
                 <div class="dropdown-menu text-right" aria-labelledby="dropdown-article" style="direction: rtl;">
                   <a class="dropdown-item" href="{% url 'account:logout' %}">خروج</a>
                 </div>
@@ -62,7 +62,7 @@
 <style>
   .main-nav {
       display: flex;
-      justify-content: space-between; /* آیتم‌ها رو به دو انتهای مخالف می‌فرسته */
+      justify-content: space-between; 
       align-items: center;
       height: 100px;
   }
@@ -79,7 +79,7 @@
   .nav-center {
     padding-top: 0px;
     padding-bottom: 35px;
-    padding-left: 230px;
+    padding-left: 210px;
     
   }
   
@@ -201,7 +201,8 @@
   .nav-item.dropdown .nav-link {
     display: flex;
     align-items: center;
-    padding: 0 12px;
+    /* padding: top right bottom left */
+    padding: 0 4px 0 12px; /* <-- تغییر در این خط اعمال شد */
     height: 100%;
     color: white;
     font-size: 14px;
