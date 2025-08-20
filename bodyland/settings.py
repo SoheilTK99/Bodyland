@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'product.apps.ProductConfig',
     'course.apps.CourseConfig',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

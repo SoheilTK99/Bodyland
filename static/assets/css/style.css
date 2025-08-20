@@ -1570,10 +1570,10 @@ Events Style
 
 .events .item .image img {
   position: absolute;
-  border-radius: 25px;
-  max-width: 260px;
-  left: 0;
-  top: -70px;
+  border-radius: 45px;
+  max-width: 240px;
+  left: 20;
+  top: -90px;
 }
 
 .events .item ul li {
