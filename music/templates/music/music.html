@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block body_class %}music-page{% endblock %}
+{% block body_class %}
+  music-page
+{% endblock %}
 
 {% block content %}
-
   <div class="section about-us">
     <div class="container">
       <div class="row">
@@ -12,66 +13,19 @@
 
             <!-- موزیک خارجی -->
             <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                  موزیک خارجی
-                </button>
-              </h2>
+              <h2 class="accordion-header" id="headingOne"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"> خارجی</button></h2>
               <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   {% for music in musics %}
                     {% if music.categorey == 'foreign' %}
                       <div class="music-item">
-                        <h4>{{ music.music_name }}</h4>
-                        <img src="{{ music.label.url }}" />
-                        <audio controls>
-                          <source src="{{ music.music_file.url }}" type="audio/mpeg" />مرورگر شما از پخش صوتی پشتیبانی نمی‌کند.
-                        </audio>
-                      </div>
-                    {% endif %}
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-
-            <!-- موزیک قدیمی -->
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  موزیک قدیمی
-                </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  {% for music in musics %}
-                    {% if music.categorey == 'old' %}
-                      <div class="music-item">
-                        <h4>{{ music.music_name }}</h4>
-                        <img src="{{ music.label.url }}" />
-                        <audio controls>
-                          <source src="{{ music.music_file.url }}" type="audio/mpeg" />مرورگر شما از پخش صوتی پشتیبانی نمی‌کند.
-                        </audio>
-                      </div>
-                    {% endif %}
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-
-            <!-- ریمیکس ها -->
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  ریمیکس ها
-                </button>
-              </h2>
-              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  {% for music in musics %}
-                    {% if music.categorey == 'remix' %}
-                      <div class="music-item">
-                        <h4>{{ music.music_name }}</h4>
-                        <img src="{{ music.label.url }}" />
+                        <div class="music-info">
+                          <img src="{{ music.label.url }}" alt="{{ music.music_name }}"/>
+                          <div class="music-details">
+                            <h4>{{ music.artist_name }}</h4>
+                            <p>{{ music.music_name }}</p>
+                          </div>
+                        </div>
                         <audio controls>
                           <source src="{{ music.music_file.url }}" type="audio/mpeg" />مرورگر شما از پخش صوتی پشتیبانی نمی‌کند.
                         </audio>
@@ -84,18 +38,69 @@
 
             <!-- رپ -->
             <div class="accordion-item">
-              <h2 class="accordion-header" id="headingFour">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                  رپ
-                </button>
-              </h2>
+              <h2 class="accordion-header" id="headingFour"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">رپ فارسی</button></h2>
               <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   {% for music in musics %}
                     {% if music.categorey == 'rap' %}
                       <div class="music-item">
-                        <h4>{{ music.music_name }}</h4>
-                        <img src="{{ music.label.url }}" />
+                        <div class="music-info">
+                          <img src="{{ music.label.url }}" alt="{{ music.music_name }}"/>
+                          <div class="music-details">
+                            <h4>{{ music.artist_name }}</h4>
+                            <p>{{ music.music_name }}</p>
+                          </div>
+                        </div>
+                        <audio controls>
+                          <source src="{{ music.music_file.url }}" type="audio/mpeg" />مرورگر شما از پخش صوتی پشتیبانی نمی‌کند.
+                        </audio>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+
+            <!-- ریمیکس ها -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">ریمیکس</button></h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  {% for music in musics %}
+                    {% if music.categorey == 'remix' %}
+                      <div class="music-item">
+                        <div class="music-info">
+                          <img src="{{ music.label.url }}" alt="{{ music.music_name }}"/>
+                          <div class="music-details">
+                            <h4>{{ music.artist_name }}</h4>
+                            <p>{{ music.music_name }}</p>
+                          </div>
+                        </div>
+                        <audio controls>
+                          <source src="{{ music.music_file.url }}" type="audio/mpeg" />مرورگر شما از پخش صوتی پشتیبانی نمی‌کند.
+                        </audio>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+
+            <!-- موزیک قدیمی -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> قدیمی</button></h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  {% for music in musics %}
+                    {% if music.categorey == 'old' %}
+                      <div class="music-item">
+                        <div class="music-info">
+                          <img src="{{ music.label.url }}" alt="{{ music.music_name }}"/>
+                          <div class="music-details">
+                            <h4>{{ music.artist_name }}</h4>
+                            <p>{{ music.music_name }}</p>
+                          </div>
+                        </div>
                         <audio controls>
                           <source src="{{ music.music_file.url }}" type="audio/mpeg" />مرورگر شما از پخش صوتی پشتیبانی نمی‌کند.
                         </audio>
@@ -108,18 +113,19 @@
 
             <!-- پاپ -->
             <div class="accordion-item">
-              <h2 class="accordion-header" id="headingFive">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                  پاپ
-                </button>
-              </h2>
+              <h2 class="accordion-header" id="headingFive"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">پاپ</button></h2>
               <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   {% for music in musics %}
                     {% if music.categorey == 'pop' %}
                       <div class="music-item">
-                        <h4>{{ music.music_name }}</h4>
-                        <img src="{{ music.label.url }}" />
+                        <div class="music-info">
+                          <img src="{{ music.label.url }}" alt="{{ music.music_name }}"/>
+                          <div class="music-details">
+                            <h4>{{ music.artist_name }}</h4>
+                            <p>{{ music.music_name }}</p>
+                          </div>
+                        </div>
                         <audio controls>
                           <source src="{{ music.music_file.url }}" type="audio/mpeg" />مرورگر شما از پخش صوتی پشتیبانی نمی‌کند.
                         </audio>
@@ -129,20 +135,18 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
 
         <div class="col-lg-5 align-self-center" style="direction: rtl; ">
           <div class="section-heading">
-            <h2 style=" line-height: 1.5;">با هر سبک و سلیقه ای موسیقی دلخواهت رو موقع تمرین گوش بده</h2>
-            <p>اگه موزیک مدنظرت تو پلی لیست ما نبود، اونو از طریق پیتشبانی به ما  معرفی کن.<div class=""></div></p>
+            <h2 style=" line-height: 1.5;">با هر سبک و سلیقه ای، موسیقی دلخواهت رو گوش بده</h2>
+            <p>اگه موزیک مدنظرت تو پلی لیست نبود، اونو به ما معرفی کن.</p>
             <div class="main-button">
               <a href="#">پیشنهاد موزیک</a>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>

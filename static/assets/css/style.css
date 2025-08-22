@@ -282,6 +282,9 @@ body.dark-mode .accordion-button:not(.collapsed) {
 body.dark-mode .accordion-item {
   background-color: #f1f0fe !important; 
 }
+body.dark-mode .section-heading p {
+  color: white;
+}
 
 body.dark-mode .rule-box h1,
 body.dark-mode .rule-box h6 {
@@ -1030,6 +1033,7 @@ About Style
 --------------------------------------------- 
 */
 
+/* === استایل‌های قبلی شما === */
 .about-us {
   position: relative;
   padding: 0px;
@@ -1044,7 +1048,7 @@ About Style
   z-index: -1;
   width: 84%;
   height: 100%;
-  background-color: transparent; /* تغییر داده شد به شفاف برای نمایش پس‌زمینه آجری */
+  background-color: transparent;
   content: '';
   border-top-left-radius: 500px;
   border-bottom-left-radius: 500px;
@@ -1053,7 +1057,7 @@ About Style
 .accordion {
   margin-top: -40px;
   margin-bottom: -40px;
-  background-color: transparent; /* تغییر داده شد به شفاف */
+  background-color: transparent;
   border-radius: 40px;
   padding: 80px 50px 50px 50px;
 }
@@ -1122,7 +1126,7 @@ h2.accordion-header button {
   font-size: 14px;
   line-height: 28px;
   color: #4a4a4a;
-  background: #f1f0fe; /* می‌توانید این را هم transparent کنید اگر محتوای داخلی نیز کاملا شفاف باشد */
+  background: #f1f0fe;
   backdrop-filter: none;
   border-radius: 0 0 16px 16px;
   animation: fadeIn 0.3s ease;
@@ -1139,50 +1143,75 @@ h2.accordion-header button {
   }
 }
 
+/* === استایل‌های جدید و اصلاح شده برای آیتم موزیک === */
+
 .music-item {
   background: rgb(189, 183, 246);
-  border-radius: 30px;
+  border-radius: 20px; /* کمی گردی را کمتر کردم */
   padding: 16px;
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column; /* آیتم‌ها (اطلاعات و پلیر) زیر هم باشند */
 }
 
 .music-item:hover {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 157, 0, 0.8);
   transform: scale(1.02);
 }
 
-.music-item h4 {
-  font-size: 17px;
-  margin-bottom: 10px;
-  color: #111827;
+/* کانتینر جدید برای تصویر و متن */
+.music-info {
+  display: flex;
+  align-items: center; /* متن و تصویر در یک راستا باشند */
+  margin-bottom: 15px; /* فاصله بین این بخش و پلیر صوتی */
 }
 
 .music-item img {
-  width: 30%;
-  height: 150px;
+  width: 140px;  /* اندازه ثابت برای تصویر */
+  height: 140px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  border-radius: 12px; /* گردی گوشه‌های تصویر */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  margin-left: 13px;
+  margin-left: 15px; /* فاصله بین تصویر و متن (چون تصویر در راست است) */
+  flex-shrink: 0; /* جلوگیری از کوچک شدن تصویر */
+}
+
+/* کانتینر جدید برای نام خواننده و موزیک */
+.music-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left; /* متن‌ها راست‌چین باشند */
+  direction: ltr;
+  margin-left: 10px;
+}
+
+.music-details h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  color: #111827;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+.music-details p {
+  font-size: 15px;
+  margin: 0;
+  color: #333;
+  font-family: 'Vazirmatn', sans-serif;
 }
 
 .music-item audio {
   width: 100%;
-  margin-top: 10px;
+  margin-top: auto; /* پلیر صوتی به پایین آیتم می‌چسبد */
   border-radius: 8px;
 }
 
 .accordion-header {
   text-align: right;
   direction: rtl;
-}
-
-.accordion h4 {
-  font-family: 'Vazirmatn', sans-serif;
-  margin-left: 14px;
 }
 
 .about-us .section-heading {
