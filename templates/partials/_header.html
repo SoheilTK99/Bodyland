@@ -1,63 +1,80 @@
-<!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky background-header">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <nav class="main-nav">
-          <div class="nav-left">
-            {% if is_logged_in %}
-              <li class="nav-item dropdown" style=" font-size: 25px;" >
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"><img src="/static/assets/images/logged-in2.png" alt="" style="width: 36px; padding-top: 4px;"></a>
-                <div class="dropdown-menu text-right" aria-labelledby="dropdown-article" style="direction: rtl;">
-                  <a class="dropdown-item" href="{% url 'account:logout' %}">خروج</a>
-                </div>
-              </li>
-            {% else %}
-              <li>
-                <a href="{% url 'account:login' %}?next={{ request.path }}" class="active" ><img src="/static/assets/images/user.png" alt="User-logo" style="width: 38px; padding-top: 4px;"> </a>
-              </li>
-            {% endif %}
-            <img src="/static/assets/images/line.png" alt="line" style="width: 36px;">
-            <button id="themeToggle" style="background: none; border: none; cursor: pointer;">
-              <img id="moonIcon" src="/static/assets/images/dark-mode.png" alt="Dark Mode" style="width: 32px; display: inline;" />
-              <img id="sunIcon" src="/static/assets/images/sun.png" alt="Light Mode" style="width: 32px; display: none;" />
-            </button>
-            <div class="search-input">
-              <form class="search-input" action="#">
-                <input type="text" placeholder="جستجو کنید" name="searchKeyword" style="text-align: right;" />
-                <i class="fa fa-search"></i>
-              </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+
+                    <div class="nav-right">
+                        <a href="/home/#top" class="logo">
+                            <img src="/static/assets/images/logo.png" alt="Logo" style="width:200px;"/>
+                        </a>
+                    </div>
+
+                    <div class="nav-center">
+                        <ul class="nav">
+                            <li>
+                                <a href="/rules/" class="smart-scroll {% if '/product/' in request.path %}active{% endif %}" data-target="rule">قوانین و مقررات</a>
+                            </li>
+                            <li>
+                                <a href="/home/#blogs" class="smart-scroll" data-target="blogs">مجله</a>
+                            </li>
+                            <li>
+                                <a href="/home/#events" class="smart-scroll" data-target="events">دوره ها</a>
+                            </li>
+                            <li>
+                                <a href="/product/#step4" class="smart-scroll {% if '/product/' in request.path %}active{% endif %}" data-target="#step4">فروشگاه</a>
+                            </li>
+                            <li>
+                                <a href="/workout/" class="smart-scroll {% if '/workout' in request.path %}active{% endif %}" data-target="top">برنامه تمرینی</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-left">
+                        <div class="search-input">
+                            <form class="search-input-form" action="#">
+                                <input type="text" placeholder="جستجو کنید" name="searchKeyword" style="text-align: right;" />
+                                <i class="fa fa-search"></i>
+                            </form>
+                        </div>
+                        
+                        <ul class="user-menu">
+                            {% if is_logged_in %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                    <img src="/static/assets/images/logged-in2.png" alt="User" style="width: 36px;">
+                                </a>
+                                <div class="dropdown-menu text-right" style="direction: rtl;">
+                                    <a class="dropdown-item" href="{% url 'account:logout' %}">خروج</a>
+                                </div>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'account:login' %}?next={{ request.path }}">
+                                    <img src="/static/assets/images/user.png" alt="User-logo" style="width: 38px;">
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+
+                        <img src="/static/assets/images/line.png" alt="line" style="width: 36px;">
+                        
+                        <button id="themeToggle" style="background: none; border: none; cursor: pointer;">
+                            <img id="moonIcon" src="/static/assets/images/dark-mode.png" alt="Dark Mode" style="width: 32px; display: inline;" />
+                            <img id="sunIcon" src="/static/assets/images/sun.png" alt="Light Mode" style="width: 32px; display: none;" />
+                        </button>
+                        </div>
+                    
+                    <a class="menu-trigger">
+                        <span>Menu</span>
+                    </a>
+
+                </nav>
             </div>
-          </div>
-
-          <div class="nav-center">
-            <ul class="nav">
-              <li>
-                <a href="/rules/" class="smart-scroll {% if '/product/' in request.path %}active{% endif %}"  data-target="rule">قوانین و مقررات</a>
-              </li>
-              <li>
-                <a href="/home/#blogs" class="smart-scroll" data-target="blogs">مجله</a>
-              </li>
-              <li>
-                <a href="/home/#events" class="smart-scroll" data-target="events">دوره ها</a>
-              </li>              
-              <li>
-                <a href="/product/#step4" class="smart-scroll {% if '/product/' in request.path %}active{% endif %}" data-target="#step4">فروشگاه</a>
-              </li>
-              <li>
-                <a href="/workout/" class="smart-scroll {% if '/workout' in request.path %}active{% endif %}" data-target="top">برنامه تمرینی</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="nav-right">
-            <a href="/home/#top" class="smart-scroll" data-target="top"><img src="/static/assets/images/logo.png" alt="Logo"  style="padding-bottom: 25px; width:200px;"/></a>
-          </div>
-        </nav>
-      </div>
+        </div>
     </div>
-  </div>
 </header>
+
 
 <style>
   .main-nav {
@@ -80,7 +97,6 @@
     padding-top: 0px;
     padding-bottom: 35px;
     padding-left: 210px;
-    
   }
   
   .nav-center .nav {
@@ -104,7 +120,6 @@
       gap: 20px; /* فاصله بین آیتم‌ها رو تنظیم می‌کنه */
   }
   
-  /* برای اینکه منو و لوگو کنار هم قرار بگیرن، باید اون‌ها رو در یک باکس قرار بدید */
   .nav-right .nav {
       display: flex;
       gap: 20px;
@@ -124,7 +139,6 @@
     position: relative;
     width: 220px;
     padding-left: 10px;
-
   }
   
   .search-input input {
@@ -140,7 +154,7 @@
   
   .search-input input::placeholder {
     color: rgba(255, 255, 255, 0.62);
-    opacity: 1; /* اگه مرورگر کم‌رنگش کرده باشه */
+    opacity: 1;
   }
   
   .search-input i.fa-search {
@@ -171,7 +185,7 @@
     top: 120%;
     left: 50%;
     transform: translateX(-50%);
-    background: transparent; /* حذف بک‌گراند سفید */
+    background: transparent;
     padding: 0;
     border: none;
     box-shadow: none;
@@ -191,7 +205,6 @@
     width: fit-content;
   }
   
-  /* دکمه‌ی dropdown برای اسم کاربر */
   .nav-item.dropdown {
     display: flex;
     align-items: center;
@@ -201,8 +214,7 @@
   .nav-item.dropdown .nav-link {
     display: flex;
     align-items: center;
-    /* padding: top right bottom left */
-    padding: 0 4px 0 12px; /* <-- تغییر در این خط اعمال شد */
+    padding: 0 4px 0 12px;
     height: 100%;
     color: white;
     font-size: 14px;
@@ -216,5 +228,124 @@
     display: flex;
     align-items: center;
     height: 100%;
+  }
+
+  /* ===================================
+     اصلاح چیدمان اصلی هدر برای دسکتاپ
+     =================================== */
+  .header-area .main-nav .nav-left { order: 1; }
+  .header-area .main-nav .nav-center { order: 2; }
+  .header-area .main-nav .nav-right { order: 3; }
+
+
+  /* ===================================
+     اصلاح ترتیب آیکون‌های سمت چپ هدر
+     =================================== */
+  .header-area .main-nav .nav-left {
+    display: flex;
+    align-items: center;
+  }
+  .header-area .main-nav .nav-left .search-input { 
+    order: 2; 
+  }
+  .header-area .main-nav .nav-left > *:not(.search-input) {
+    order: 1;
+  }
+
+  /* =============================================
+    کد نهایی و کامل برای هدر ریسپانسیو
+    ============================================= */
+  @media (max-width: 992px) {
+    /* تنظیمات کلی هدر در موبایل */
+    .header-area .main-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ۱. مرتب کردن آیتم‌ها: آیکون‌ها چپ، لوگو راست */
+    
+    /* گروه آیکون‌های چپ + دکمه همبرگری در سمت چپ قرار می‌گیرند */
+    .header-area .main-nav .nav-left {
+      display: flex; /* نمایش آیکون‌ها */
+      order: 1; /* ترتیب اول */
+    }
+    .header-area .main-nav .menu-trigger {
+        display: block; /* نمایش دکمه همبرگری */
+        order: 2; /* بعد از آیکون‌ها */
+    }
+
+    /* لوگو در سمت راست قرار می‌گیرد */
+    .header-area .main-nav .nav-right {
+      order: 3; /* ترتیب آخر */
+      padding-bottom: 0 !important;
+    }
+
+    /* مخفی کردن آیتم‌های اضافه در موبایل */
+    .header-area .main-nav .nav-center,
+    .header-area .main-nav .search-input {
+      display: none;
+    }
+
+    /* کوچک کردن لوگو */
+    .header-area .main-nav .nav-right img {
+      width: 150px;
+      padding-bottom: 0 !important;
+    }
+
+    /* ۲. استایل منوی بازشونده (بدون تغییر) */
+    .header-area.menu-open .main-nav .nav-center {
+      display: block;
+      position: absolute;
+      top: 80px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #1f2122;
+      padding: 15px 0;
+      box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+    }
+    
+    .header-area.menu-open .main-nav .nav {
+      display: flex;
+      flex-direction: column;
+    }
+    .header-area.menu-open .main-nav .nav li {
+      width: 100%;
+      text-align: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .header-area.menu-open .main-nav .nav li:last-child {
+      border-bottom: none;
+    }
+
+    /* ۳. استایل‌های دکمه همبرگری (بدون تغییر) */
+    .header-area .main-nav .menu-trigger {
+      cursor: pointer;
+      position: relative;
+      width: 32px;
+      height: 40px;
+      text-indent: -9999em;
+      z-index: 99;
+    }
+    .header-area .main-nav .menu-trigger span,
+    .header-area .main-nav .menu-trigger span:before,
+    .header-area .main-nav .menu-trigger span:after {
+      background-color: #fff;
+      width: 30px;
+      height: 2px;
+      position: absolute;
+      left: 0;
+      transition: all 0.3s ease-in-out;
+    }
+    .header-area .main-nav .menu-trigger span { top: 16px; }
+    .header-area .main-nav .menu-trigger span:before { content: ''; top: -8px; }
+    .header-area .main-nav .menu-trigger span:after { content: ''; top: 8px; }
+
+    /* تبدیل آیکون به ضربدر */
+    .header-area.menu-open .menu-trigger span { background-color: transparent; }
+    .header-area.menu-open .menu-trigger span:before { top: 0; transform: rotate(45deg); }
+    .header-area.menu-open .menu-trigger span:after { top: 0; transform: rotate(-45deg); }
   }
 </style>

@@ -88,14 +88,22 @@
     }
   });
 
+
+
   // Menu Dropdown Toggle
   if ($('.menu-trigger').length) {
-    $(".menu-trigger").on('click', function () {
+    $(".menu-trigger").on('click', function () { 
+      
+      // این خط را برای تست اضافه کن
+      console.log("دکمه کلیک شد!");
+      
       $(this).toggleClass('active');
-      $('.header-area .nav').slideToggle(200);
+      $('.header-area').toggleClass('menu-open');
     });
   }
 
+
+  
   // Menu elevator animation
   $('.scroll-to-section a[href*=\\#]:not([href=\\#])').on('click', function () {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
