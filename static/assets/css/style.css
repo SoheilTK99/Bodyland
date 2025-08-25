@@ -583,8 +583,8 @@ Header Style
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 20px;
-  font-weight: 300;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 16px;
   height: 40px;
   line-height: 40px;
   text-transform: capitalize;
@@ -879,96 +879,23 @@ Banner Style
 */
 
 .main-banner {
+
   background-image: url(../images/banner-bg.jpg);
   background-position: right bottom;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 170px 100px 100px 50px;
+  padding: 140px 100px 120px 100px;
 
 }
 
 
-.main-banner .item-1 {
-  background-image: url("/static/assets/images/slider1.jpg");
-}
-
-.main-banner .item-2 {
-  background-image: url("/static/assets/images/slider2.jpg");
-}
-
-.main-banner .item-3 {
-  background-image: url("/static/assets/images/slider9.jpg");
-}
-
-.main-banner .item-4 {
-  background-image: url("/static/assets/images/slider10.jpg");
-}
-
-.main-banner .item-5 {
-  background-image: url("/static/assets/images/slider11.png");
-}
-
-.main-banner .item {
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  border-radius: 35px;
-  height: 100%;
-  margin-left: 70px;
-  padding: 180px 22px;
-}
-
-.main-banner .item span.category {
-  background-color: #7a6ad8;
-  color: #fff;
-  font-size: 14px;
-  text-transform: uppercase;
-  padding: 5px 15px;
-  border-radius: 20px;
-  display: inline-block;
-  margin-bottom: 50px;
-}
-
-.main-banner .item h2 {
+.main-banner .swiper-slide h2 {
   font-size: 46px;
   font-weight: 700;
   color: #fff;
   line-height: 70px;
-  width: 100%;
-  margin-bottom: 40px;
-}
-
-.main-banner .owl-nav {
-  position: absolute;
-  max-width: 1320px;
-  bottom: 23px;
-  left: 0;
-  text-align: right;
-}
-
-.main-banner .owl-nav .owl-prev i,
-.main-banner .owl-nav .owl-next i {
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  font-size: 24px;
-  display: inline-block;
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  opacity: 1;
-  transition: all .3s;
-}
-
-.main-banner .owl-nav .owl-prev i {
-  position: absolute;
-  bottom: 65px;
-}
-
-.main-banner .owl-nav .owl-prev i:hover,
-.main-banner .owl-nav .owl-next i:hover {
-  opacity: 1;
-  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 150px;
+  margin-right: 30px;
 }
 
 
@@ -1248,12 +1175,12 @@ Courses Style
 
 .event_filter li {
   display: inline-block;
-  margin: 0px 20px;
+  margin: 0px 30px;
 }
 
 .event_filter li a {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 700;
   color: #1e1e1e;
   transition: all .3s;
 }
@@ -1308,9 +1235,10 @@ Courses Style
 }
 
 .events_item .down-content h4 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   transition: all .3s;
+  text-align: center !important;
 }
 
 .events_item:hover .down-content h4 {
@@ -1964,7 +1892,7 @@ Responsive Style
 --------------------------------------------- 
 */
 
-body {
+/* body {
   overflow-x: hidden;
 }
 
@@ -2309,4 +2237,3 @@ body {
 }
 
 
-/*  -------------- Mobile footer end -------------- */

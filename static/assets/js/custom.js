@@ -68,7 +68,8 @@
     },
     autoplay: true,
     autoplayTimeout: 3000,
-    autoplayHoverPause: true
+    autoplayHoverPause: true,
+
   });
 
   $('.owl-testimonials').owlCarousel({

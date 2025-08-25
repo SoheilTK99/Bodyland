@@ -13,7 +13,7 @@
                     <div class="nav-center">
                         <ul class="nav">
                             <li>
-                                <a href="/rules/" class="smart-scroll {% if '/product/' in request.path %}active{% endif %}" data-target="rule">قوانین و مقررات</a>
+                                <a href="/rules/" class="smart-scroll" data-target="rule">قوانین و مقررات</a>
                             </li>
                             <li>
                                 <a href="/home/#blogs" class="smart-scroll" data-target="blogs">مجله</a>
@@ -22,12 +22,33 @@
                                 <a href="/home/#events" class="smart-scroll" data-target="events">دوره ها</a>
                             </li>
                             <li>
-                                <a href="/product/#step4" class="smart-scroll {% if '/product/' in request.path %}active{% endif %}" data-target="#step4">فروشگاه</a>
+                                <a href="/product/#step4" class="smart-scroll" data-target="#step4">فروشگاه</a>
                             </li>
                             <li>
-                                <a href="/workout/" class="smart-scroll {% if '/workout' in request.path %}active{% endif %}" data-target="top">برنامه تمرینی</a>
+                                <a href="/workout/" class="smart-scroll" data-target="top">برنامه تمرینی</a>
                             </li>
-                        </ul>
+
+                            <li class="mobile-only-icon user-menu-mobile">
+                                {% if is_logged_in %}
+                                    <a href="{% url 'account:logout' %}">
+                                        <img src="/static/assets/images/logged-in2.png" alt="User" style="width: 24px; vertical-align: middle; margin-left: 8px;">
+                                        خروج از حساب
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'account:login' %}?next={{ request.path }}">
+                                        <img src="/static/assets/images/user.png" alt="User-logo" style="width: 24px; vertical-align: middle; margin-left: 8px;">
+                                        ورود / ثبت‌نام
+                                    </a>
+                                {% endif %}
+                            </li>
+                            <li class="mobile-only-icon theme-toggle-mobile">
+                                <a href="javascript:void(0);" id="themeToggleMobile">
+                                    <img id="moonIconMobile" src="/static/assets/images/dark-mode.png" alt="Dark Mode" style="width: 24px; vertical-align: middle; margin-left: 8px;">
+                                    <img id="sunIconMobile" src="/static/assets/images/sun.png" alt="Light Mode" style="width: 24px; vertical-align: middle; margin-left: 8px; display: none;">
+                                    تغییر حالت تم
+                                </a>
+                            </li>
+                            </ul>
                     </div>
 
                     <div class="nav-left">
@@ -96,7 +117,7 @@
   .nav-center {
     padding-top: 0px;
     padding-bottom: 35px;
-    padding-left: 210px;
+    padding-left: 150px;
   }
   
   .nav-center .nav {
@@ -132,7 +153,7 @@
     height: 80px;
     object-fit: contain;
     margin-left: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
   }
   
   .search-input {
@@ -230,17 +251,11 @@
     height: 100%;
   }
 
-  /* ===================================
-     اصلاح چیدمان اصلی هدر برای دسکتاپ
-     =================================== */
   .header-area .main-nav .nav-left { order: 1; }
   .header-area .main-nav .nav-center { order: 2; }
   .header-area .main-nav .nav-right { order: 3; }
 
 
-  /* ===================================
-     اصلاح ترتیب آیکون‌های سمت چپ هدر
-     =================================== */
   .header-area .main-nav .nav-left {
     display: flex;
     align-items: center;
@@ -252,63 +267,61 @@
     order: 1;
   }
 
-  /* =============================================
-    کد نهایی و کامل برای هدر ریسپانسیو
-    ============================================= */
+
+  /* ===================================
+     Mobile Style
+     =================================== */
+
   @media (max-width: 992px) {
-    /* تنظیمات کلی هدر در موبایل */
+    
+    /* ۱. چیدمان اصلی هدر در موبایل */
     .header-area .main-nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      align-items: center; /* آیتم‌ها را در مرکز عمودی قرار می‌دهد */
     }
 
-    /* ۱. مرتب کردن آیتم‌ها: آیکون‌ها چپ، لوگو راست */
-    
-    /* گروه آیکون‌های چپ + دکمه همبرگری در سمت چپ قرار می‌گیرند */
-    .header-area .main-nav .nav-left {
-      display: flex; /* نمایش آیکون‌ها */
-      order: 1; /* ترتیب اول */
-    }
+    /* ۲. نمایش دکمه همبرگری در سمت چپ */
     .header-area .main-nav .menu-trigger {
-        display: block; /* نمایش دکمه همبرگری */
-        order: 2; /* بعد از آیکون‌ها */
+      display: block;
     }
 
-    /* لوگو در سمت راست قرار می‌گیرد */
+    /* ۳. انتقال لوگو به سمت راست */
     .header-area .main-nav .nav-right {
-      order: 3; /* ترتیب آخر */
+      /* این دستور جادویی، لوگو را به سمت راست هل می‌دهد */
+      margin-left: auto;
       padding-bottom: 0 !important;
+      padding-left : 50px;
     }
 
-    /* مخفی کردن آیتم‌های اضافه در موبایل */
-    .header-area .main-nav .nav-center,
-    .header-area .main-nav .search-input {
+    /* ۴. کوچک کردن لوگو و حذف پدینگ‌های اضافی */
+    .header-area .main-nav .nav-right img {
+      width: 150px;
+      padding: 0 !important; /* تمام پدینگ‌های اضافه را حذف کن */
+      margin-left: 155px;
+      padding-bottom: 30px !important;
+    }
+
+    /* ۵. مخفی کردن آیتم‌های غیرضروری */
+    .header-area .main-nav .nav-left,
+    .header-area .main-nav .nav-center {
       display: none;
     }
 
-    /* کوچک کردن لوگو */
-    .header-area .main-nav .nav-right img {
-      width: 150px;
-      padding-bottom: 0 !important;
-    }
 
-    /* ۲. استایل منوی بازشونده (بدون تغییر) */
+    /* ۶. استایل منوی بازشونده (بدون تغییر) */
     .header-area.menu-open .main-nav .nav-center {
       display: block;
       position: absolute;
       top: 80px;
       left: 0;
-      right: 0;
       width: 100%;
       background-color: #1f2122;
-      padding: 15px 0;
       box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
     }
-    
     .header-area.menu-open .main-nav .nav {
       display: flex;
       flex-direction: column;
+      padding: 15px 0;
     }
     .header-area.menu-open .main-nav .nav li {
       width: 100%;
@@ -319,8 +332,17 @@
     .header-area.menu-open .main-nav .nav li:last-child {
       border-bottom: none;
     }
+    .header-area.menu-open .main-nav .mobile-only-icon {
+        display: block !important;
+    }
+    .header-area.menu-open .main-nav .mobile-only-icon a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-    /* ۳. استایل‌های دکمه همبرگری (بدون تغییر) */
+
+    /* ۷. استایل‌های دکمه همبرگری (بدون تغییر) */
     .header-area .main-nav .menu-trigger {
       cursor: pointer;
       position: relative;
@@ -348,4 +370,12 @@
     .header-area.menu-open .menu-trigger span:before { top: 0; transform: rotate(45deg); }
     .header-area.menu-open .menu-trigger span:after { top: 0; transform: rotate(-45deg); }
   }
+
+  /* این کدها هم برای دسکتاپ لازم هستند و باید خارج از مدیا کوئری باشند */
+  .main-nav .mobile-only-icon {
+    display: none !important;
+  }
+
+
+
 </style>
