@@ -390,30 +390,30 @@
   </Style>
 
   <div class="step-progress-bar">
-    <div class="step-bullet active">1</div>
-    <div class="step-line"></div>
-    <div class="step-bullet">2</div>
-    <div class="step-line"></div>
-    <div class="step-bullet">3</div>
-    <div class="step-line"></div>
-    <div class="step-bullet">4</div>
-    <div class="step-line"></div>
+    <div class="step-bullet active">1</div><div class="step-line"></div>
+    <div class="step-bullet">2</div><div class="step-line"></div>
+    <div class="step-bullet">3</div><div class="step-line"></div>
+    <div class="step-bullet">4</div><div class="step-line"></div>
     <div class="step-bullet">5</div>
   </div>
 
   <div id="step-container" style="position: relative; min-height: 500px;">
+
     <div id="step1" class="step active">
       <h3>جنسیت خود را انتخاب کنید:</h3>
-      <label><input type="radio" name="gender" value="male" />مرد</label><br />
-      <label><input type="radio" name="gender" value="female" />زن</label><br />
+      <p style="color: #c0392b;"> ( برای دریافت برنامه تمرینی لازم است ابتدا به حساب کاربری خود وارد شوید ) </p>
+      <br>
+      {% for gender in all_genders %}
+        <label><input type="radio" name="gender" value="{{ gender.name }}" />{{ gender.name }}</label><br />
+      {% endfor %}
       <button onclick="nextStep()">ادامه</button>
     </div>
 
     <div id="step2" class="step">
       <h3>هدف شما از تمرین چیست؟</h3>
-      <label><input type="radio" name="goal" value="hypertrophy" />افزایش حجم</label><br />
-      <label><input type="radio" name="goal" value="weight loss" />کاهش وزن</label><br />
-      <label><input type="radio" name="goal" value="strength training" />افزایش قدرت</label><br />
+      {% for category in all_categories %}
+        <label><input type="radio" name="goal" value="{{ category.name }}" />{{ category.name }}</label><br />
+      {% endfor %}
       <button onclick="nextStep()">ادامه</button>
       <button type="button" onclick="goBackToStep1()">بازگشت به انتخاب جنسیت</button>
     </div>
@@ -845,54 +845,64 @@
       <button onclick="nextStep()">ادامه</button>
       <button type="button" onclick="goBackToStep2()">بازگشت به انتخاب هدف تمرین</button>
     </div>
-
     <div id="step4" class="step">
       <h3>ابزار تمرینی خود را انتخاب کنید:</h3>
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+      <div class="tool-options" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+
         <label>
-          <img src="{% static 'assets/images/bodyweight.png' %}" alt="وزن بدن" width="40" />
-          <input type="checkbox" name="equipment" value="bodyweight" />وزن بدن
+          <img src="{% static 'assets/images/bodyweight.png' %}" alt="وزن بدن">
+          <input type="checkbox" name="equipment" value="وزن بدن">
+          وزن بدن
         </label>
 
         <label>
-          <img src="{% static 'assets/images/dumbbells.png' %}" alt="دمبل" width="40" />
-          <input type="checkbox" name="equipment" value="dumbbells" />دمبل
+          <img src="{% static 'assets/images/dumbbells.png' %}" alt="دمبل">
+          <input type="checkbox" name="equipment" value="دمبل">
+          دمبل
         </label>
 
         <label>
-          <img src="{% static 'assets/images/halter.png' %}" alt="هالتر و صفحه" width="40" />
-          <input type="checkbox" name="equipment" value="halter and plate" />هالتر و صفحه
+          <img src="{% static 'assets/images/halter.png' %}" alt="هالتر و صفحه">
+          <input type="checkbox" name="equipment" value="هالتر و صفحه">
+          هالتر و صفحه
         </label>
 
         <label>
-          <img src="{% static 'assets/images/machine.png' %}" alt="دستگاه" width="40" />
-          <input type="checkbox" name="equipment" value="machine" />دستگاه
+          <img src="{% static 'assets/images/machine.png' %}" alt="دستگاه">
+          <input type="checkbox" name="equipment" value="دستگاه">
+          دستگاه
         </label>
 
         <label>
-          <img src="{% static 'assets/images/cable.png' %}" alt="سیمکش" width="40" />
-          <input type="checkbox" name="equipment" value="cable" />سیمکش
+          <img src="{% static 'assets/images/cable.png' %}" alt="سیمکش">
+          <input type="checkbox" name="equipment" value="سیمکش">
+          سیمکش
         </label>
 
         <label>
-          <img src="{% static 'assets/images/smith.png' %}" alt="اسمیت" width="40" />
-          <input type="checkbox" name="equipment" value="smith" />اسمیت
+          <img src="{% static 'assets/images/smith.png' %}" alt="دستگاه اسمیت">
+          <input type="checkbox" name="equipment" value="دستگاه اسمیت">
+          دستگاه اسمیت
         </label>
 
         <label>
-          <img src="{% static 'assets/images/band.png' %}" alt="کش" width="40" />
-          <input type="checkbox" name="equipment" value="band" />کش ورزشی
+          <img src="{% static 'assets/images/band.png' %}" alt="کش ورزشی">
+          <input type="checkbox" name="equipment" value="کش ورزشی">
+          کش ورزشی
         </label>
 
         <label>
-          <img src="{% static 'assets/images/ball.png' %}" alt="توپ" width="40" />
-          <input type="checkbox" name="equipment" value="medicine ball" />توپ
+          <img src="{% static 'assets/images/ball.png' %}" alt="توپ">
+          <input type="checkbox" name="equipment" value="توپ">
+          توپ
         </label>
 
         <label>
-          <img src="{% static 'assets/images/kettlebell.png' %}" alt="دمبل روسی" width="40" />
-          <input type="checkbox" name="equipment" value="kettlebells" />دمبل روسی
+          <img src="{% static 'assets/images/kettlebell.png' %}" alt="دمبل روسی">
+          <input type="checkbox" name="equipment" value="دمبل روسی">
+          دمبل روسی
         </label>
+
       </div>
 
       <br />
@@ -907,370 +917,324 @@
     </div>
   </div>
 
-  <script>
-
+<script>
     // مرحله فعلی
-    let currentStep = 1
-    
+    let currentStep = 1;
+
     // مقدار جنسیت انتخاب‌شده
-    let selectedGender = null
-    
-    // مپ عضله‌های SVG به فیلدهای مدل Workout
+    let selectedGender = null;
+
+    // ========== ۱. اصلاح شد: مپ عضلات به مقادیر فارسی ==========
+    // مقادیر انگلیسی با نام‌های فارسی موجود در دیتابیس شما جایگزین شدند.
     const muscleMap = {
-      chest: 'chest',
-      back: 'back',
-      shoulder: 'shoulder',
-      biceps: 'hand',
-      hands: 'hand',
-      armpit: 'armpit',
-      obliques: 'abdominal and side',
-      abdominals: 'abdominal and side',
-      quads: 'leg',
-      calves: 'calf',
-      forearms: 'hand',
-      traps: 'shoulder',
-      frontshoulders: 'shoulder',
-      hamstrings: 'leg',
-      glutes: 'leg',
-      triceps: 'hand',
-      lats: 'armpit',
-      lowerback: 'back',
-      trapsmiddle: 'back',
-      rearshoulders: 'shoulder'
-    }
-    
+        'chest': 'سینه',
+        'back': 'پشت',
+        'lowerback': 'پشت',
+        'trapsmiddle': 'پشت',
+        'shoulder': 'شانه',
+        'frontshoulders': 'شانه',
+        'rearshoulders': 'شانه',
+        'traps': 'شانه',
+        'biceps': 'دست',
+        'triceps': 'دست',
+        'hands': 'دست',
+        'forearms': 'دست',
+        'armpit': 'زیربغل',
+        'lats': 'زیربغل',
+        'obliques': 'شکم و پهلو',
+        'abdominals': 'شکم و پهلو',
+        'quads': 'پا',
+        'hamstrings': 'پا',
+        'glutes': 'پا',
+        'leg': 'پا',
+        'calves': 'ساق پا'
+    };
+
     // رفتن به مرحله بعد
     function nextStep() {
-      document.querySelectorAll('.step').forEach((el) => el.classList.remove('active'))
-      currentStep++
-      
+        document.querySelectorAll('.step').forEach((el) => el.classList.remove('active'));
+        currentStep++;
 
-
-      // وقتی به مرحله 3 رسیدیم (آناتومی)، جنسیت را چک کن و نمایش بده
-      if (currentStep === 3) {
-        selectedGender = sessionStorage.getItem('gender')
-        if (selectedGender === 'male') {
-          document.getElementById('male-anatomy').style.display = 'block'
-          document.getElementById('female-anatomy').style.display = 'none'
-        } else if (selectedGender === 'female') {
-          document.getElementById('male-anatomy').style.display = 'none'
-          document.getElementById('female-anatomy').style.display = 'block'
-        }
-      }
-      
-      if (currentStep === 4) {
-          const selectedEquipments = Array.from(document.querySelectorAll('input[name="equipment"]:checked')).map(el => el.value);
-          sessionStorage.setItem('equipments', JSON.stringify(selectedEquipments));
+        // وقتی به مرحله 3 رسیدیم (آناتومی)، جنسیت را چک کن و نمایش بده
+        if (currentStep === 3) {
+            selectedGender = sessionStorage.getItem('gender');
+            if (selectedGender === 'مرد') { // مقادیر فارسی جایگزین شد
+                document.getElementById('male-anatomy').style.display = 'block';
+                document.getElementById('female-anatomy').style.display = 'none';
+            } else if (selectedGender === 'زن') { // مقادیر فارسی جایگزین شد
+                document.getElementById('male-anatomy').style.display = 'none';
+                document.getElementById('female-anatomy').style.display = 'block';
+            }
         }
 
-      document.getElementById(`step${currentStep}`).classList.add('active')
-      updateProgressBar();
+        if (currentStep === 4) {
+            const selectedEquipments = Array.from(document.querySelectorAll('input[name="equipment"]:checked')).map(el => el.value);
+            sessionStorage.setItem('equipments', JSON.stringify(selectedEquipments));
+        }
+
+        document.getElementById(`step${currentStep}`).classList.add('active');
+        updateProgressBar();
     }
 
     function updateProgressBar() {
-      const bullets = document.querySelectorAll('.step-bullet');
-      const lines = document.querySelectorAll('.step-line');
+        const bullets = document.querySelectorAll('.step-bullet');
+        const lines = document.querySelectorAll('.step-line');
 
-      bullets.forEach((b, index) => {
-        if (index < currentStep) {
-          b.classList.add('active');
-        } else {
-          b.classList.remove('active');
-        }
-      });
+        bullets.forEach((b, index) => {
+            if (index < currentStep) {
+                b.classList.add('active');
+            } else {
+                b.classList.remove('active');
+            }
+        });
 
-      lines.forEach((line, index) => {
-        if (index < currentStep - 1) {
-          line.classList.add('active');
-        } else {
-          line.classList.remove('active');
-        }
-      });
+        lines.forEach((line, index) => {
+            if (index < currentStep - 1) {
+                line.classList.add('active');
+            } else {
+                line.classList.remove('active');
+            }
+        });
     }
 
-
-    
-    // بازگشت از مرحله ۴ به ۳
+    // بازگشت از مرحله ۵ به ۴
     function goBack() {
-      
-      document.querySelectorAll('.step').forEach((el) => el.classList.remove('active'));
-
-      currentStep = 4;  // یا هر مرحله‌ای که باید برگرده
-      document.getElementById(`step${currentStep}`).classList.add('active');
-      updateProgressBar(); 
+        document.querySelectorAll('.step').forEach((el) => el.classList.remove('active'));
+        currentStep = 4;
+        document.getElementById(`step${currentStep}`).classList.add('active');
+        updateProgressBar();
     }
 
     // ذخیره جنسیت و هدف تمرینی در sessionStorage
     document.querySelectorAll('input[name="gender"]').forEach((input) => {
-      input.addEventListener('change', function () {
-        sessionStorage.setItem('gender', this.value)
-      })
-    })
-    
-    document.querySelectorAll('input[name="goal"]').forEach((input) => {
-      input.addEventListener('change', function () {
-        sessionStorage.setItem('goal', this.value)
-      })
-    })
-    
-    // کلیک روی عضلات
-    // عضلات انتخاب‌شده رو در یک آرایه ذخیره می‌کنیم
-    let selectedMuscles = [];
-
-    document.querySelectorAll('.bodymap').forEach((part) => {
-      part.addEventListener('click', function () {
-        const clickedId = this.id;
-        const muscle = muscleMap[clickedId];
-
-        if (!muscle) {
-          alert('این عضله به مدل متصل نیست.');
-          return;
-        }
-
-        // toggle کردن انتخاب عضله
-        const isSelected = selectedMuscles.includes(muscle);
-
-        if (isSelected) {
-          selectedMuscles = selectedMuscles.filter(m => m !== muscle);
-          // حذف رنگ از همه path‌های داخل g
-          this.querySelectorAll('path').forEach(p => {
-            p.style.fill = ''; // یا رنگ پیش‌فرض
-          });
-        } else {
-          selectedMuscles.push(muscle);
-          // اضافه کردن رنگ به همه path‌های داخل g
-          this.querySelectorAll('path').forEach(p => {
-            p.style.fill = '#e63946';
-          });
-        }
-
-        sessionStorage.setItem('selectedMuscles', JSON.stringify(selectedMuscles));
-      });
+        input.addEventListener('change', function () {
+            sessionStorage.setItem('gender', this.value);
+        });
     });
 
+    document.querySelectorAll('input[name="goal"]').forEach((input) => {
+        input.addEventListener('change', function () {
+            sessionStorage.setItem('goal', this.value);
+        });
+    });
 
+    // کلیک روی عضلات
+    let selectedMuscles = [];
+    document.querySelectorAll('.bodymap').forEach((part) => {
+        part.addEventListener('click', function () {
+            const clickedId = this.id;
+            const muscle = muscleMap[clickedId];
 
+            if (!muscle) {
+                console.warn('این عضله به مدل متصل نیست:', clickedId);
+                return;
+            }
+
+            const isSelected = selectedMuscles.includes(muscle);
+
+            if (isSelected) {
+                selectedMuscles = selectedMuscles.filter(m => m !== muscle);
+                this.querySelectorAll('path').forEach(p => {
+                    p.style.fill = '';
+                });
+            } else {
+                selectedMuscles.push(muscle);
+                this.querySelectorAll('path').forEach(p => {
+                    p.style.fill = '#e63946';
+                });
+            }
+
+            sessionStorage.setItem('selectedMuscles', JSON.stringify(selectedMuscles));
+        });
+    });
+
+    // ========== ۲. اصلاح شد: تابع ارسال درخواست ==========
+    // نحوه ارسال اطلاعات برای هماهنگی با view جدید تغییر کرد.
     function submitWorkoutRequest() {
-      // بررسی لاگین بودن
-    if (typeof userIsLoggedIn !== 'undefined' && !userIsLoggedIn) {
-      // ذخیره‌ی داده‌ها در localStorage قبل از ریدایرکت
-      localStorage.setItem('gender', sessionStorage.getItem('gender'));
-      localStorage.setItem('goal', sessionStorage.getItem('goal'));
-      localStorage.setItem('selectedMuscles', sessionStorage.getItem('selectedMuscles'));
-      localStorage.setItem('equipments', JSON.stringify(
-        Array.from(document.querySelectorAll('input[name="equipment"]:checked')).map(el => el.value)
-      ));
+        if (typeof userIsLoggedIn !== 'undefined' && !userIsLoggedIn) {
+            localStorage.setItem('gender', sessionStorage.getItem('gender'));
+            localStorage.setItem('goal', sessionStorage.getItem('goal'));
+            localStorage.setItem('selectedMuscles', sessionStorage.getItem('selectedMuscles'));
+            localStorage.setItem('equipments', JSON.stringify(
+                Array.from(document.querySelectorAll('input[name="equipment"]:checked')).map(el => el.value)
+            ));
+            window.location.href = "{% url 'account:login' %}?next=/workout/#step5";
+            return;
+        }
 
-      // رفتن به صفحه لاگین و بازگشت به مرحله ۵
-      window.location.href = "{% url 'account:login' %}?next=/workout/#step5";
-      return;
-    }
+        const gender = sessionStorage.getItem('gender');
+        const goal = sessionStorage.getItem('goal');
+        const muscleList = JSON.parse(sessionStorage.getItem('selectedMuscles') || '[]');
+        const equipmentList = Array.from(document.querySelectorAll('input[name="equipment"]:checked')).map(el => el.value);
 
+        if (!gender || !goal || muscleList.length === 0 || equipmentList.length === 0) {
+            alert('لطفاً ابتدا مراحل قبلی را کامل کنید.');
+            return;
+        }
 
-      const gender = sessionStorage.getItem('gender');
-      const goal = sessionStorage.getItem('goal');
-      const muscleList = JSON.parse(sessionStorage.getItem('selectedMuscles') || '[]');
-      const equipment = Array.from(document.querySelectorAll('input[name="equipment"]:checked')).map(el => el.value);
+        // ساخت FormData برای ارسال صحیح لیست‌ها
+        const formData = new FormData();
+        formData.append('gender', gender);
+        formData.append('goal', goal);
+        muscleList.forEach(muscle => formData.append('muscle', muscle));
+        equipmentList.forEach(eq => formData.append('equipment', eq));
 
-      // بررسی اینکه همه اطلاعات کامل هستند
-      if (!gender || !goal || muscleList.length === 0 || equipment.length === 0) {
-        alert('لطفاً ابتدا مراحل قبلی را کامل کنید.');
-        return;
-      }
-
-      fetch("{% url 'workout:get_workouts_ajax' %}", {
-        method: 'POST',
-        headers: {
-          'X-CSRFToken': getCSRFToken(),
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        credentials: 'include',  // مهم برای ارسال کوکی لاگین
-        body: new URLSearchParams({
-          gender: gender,
-          goal: goal,
-          muscle: muscleList.join(','),
-          equipment: equipment.join(',')
+        fetch("{% url 'workout:get_workouts_ajax' %}", {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCSRFToken()
+            },
+            credentials: 'include',
+            body: new URLSearchParams(formData)
         })
-      })
-      .then(res => {
-        // اگر لاگین نبود، دوباره بفرست به login
-        if (res.status === 401) {
-          window.location.href = "{% url 'account:login' %}?next=/workout/#step5";
-          return null;
-        }
-        return res.json();
-      })
-      .then(data => {
-        if (!data || !data.results || data.results.length === 0) {
-          alert('تمرینی یافت نشد.');
-          return;
-        }
-
-        showWorkouts(data.results, muscleList.join(', ')); // نمایش تمرینات
-      })
-      .catch(error => {
-        console.error('Error fetching workouts:', error);
-        alert('مشکلی در دریافت تمرینات پیش آمد.');
-      });
+        .then(res => {
+            if (res.status === 401) {
+                window.location.href = "{% url 'account:login' %}?next=/workout/#step5";
+                return null;
+            }
+            return res.json();
+        })
+        .then(data => {
+            if (!data) return;
+            if (!data.results) { // بررسی کلی وجود results
+                 showWorkouts([], ""); // نمایش پیام یافت نشد
+                 return;
+            }
+            showWorkouts(data.results, muscleList.join(', '));
+        })
+        .catch(error => {
+            console.error('Error fetching workouts:', error);
+            alert('مشکلی در دریافت تمرینات پیش آمد.');
+        });
     }
 
-
-
-    
-    // نمایش تمرینات در مرحله 5
+    // ========== ۳. اصلاح شد: تابع نمایش نتایج ==========
+    // این تابع بهبود یافت تا اطلاعات کامل‌تری (عضلات، ابزار و...) را نمایش دهد.
     function showWorkouts(workouts, muscleName) {
-      document.querySelectorAll('.step').forEach((el) => el.classList.remove('active'));
-      document.getElementById('step5').classList.add('active');
-      currentStep = 5;
-      updateProgressBar();
+        document.querySelectorAll('.step').forEach((el) => el.classList.remove('active'));
+        document.getElementById('step5').classList.add('active');
+        currentStep = 5;
+        updateProgressBar();
 
-      const list = document.getElementById('workout-list');
-      list.innerHTML = '';
+        const list = document.getElementById('workout-list');
+        list.innerHTML = '';
 
-      if (workouts.length === 0) {
-        const msg = document.createElement('p');
-        msg.textContent = 'هیچ تمرینی یافت نشد.';
-        msg.className = 'not-found';
-        list.appendChild(msg);
-        return;
-      }
-
-      workouts.forEach((item) => {
-        const card = document.createElement('div');
-        card.className = 'workout-card';
-
-        const h4 = document.createElement('h4');
-        h4.textContent = item.title;
-        card.appendChild(h4);
-
-        // افزودن ویدیو در ابتدا
-        if (item.video_url) {
-          const video = document.createElement('video');
-          video.setAttribute('controls', '');
-          video.src = item.video_url;
-          card.appendChild(video);
+        if (workouts.length === 0) {
+            list.innerHTML = '<p class="not-found">با این مشخصات، تمرینی یافت نشد.</p>';
+            return;
         }
 
-        // افزودن مراحل 1 تا 5 با استایل جدید
-        const stagesContainer = document.createElement('div');
-        stagesContainer.className = 'workout-stages';
-        
-        for (let i = 1; i <= 5; i++) {
-          const stageKey = `stage${i}`;
-          if (item[stageKey]) {
-            const stageItem = document.createElement('div');
-            stageItem.className = 'stage-item';
+        workouts.forEach((item) => {
+            const card = document.createElement('div');
+            card.className = 'workout-card';
 
-            const stageNumber = document.createElement('span');
-            stageNumber.className = 'stage-number';
-            stageNumber.textContent = i; // فقط شماره مرحله
+            let cardContent = `<h4>${item.title}</h4>`;
+            
+            if (item.video_url) {
+                cardContent += `<video controls src="${item.video_url}" style="width: 100%; border-radius: 12px; margin-bottom: 20px;"></video>`;
+            }
 
-            const stageText = document.createElement('p');
-            stageText.className = 'stage-text';
-            stageText.textContent = item[stageKey]; // متن مرحله
+            
+            const stagesContainer = document.createElement('div');
+            stagesContainer.className = 'workout-stages';
+            
+            for (let i = 1; i <= 5; i++) {
+                const stageKey = `stage${i}`;
+                if (item[stageKey]) {
+                    stagesContainer.innerHTML += `
+                        <div class="stage-item">
+                            <span class="stage-number">${i}</span>
+                            <p class="stage-text">${item[stageKey]}</p>
+                        </div>
+                    `;
+                }
+            }
+            
+            const description = document.createElement('p');
+            description.innerHTML = `<strong>توضیحات:</strong> ${item.discription || 'ندارد'}`;
 
-            stageItem.appendChild(stageNumber);
-            stageItem.appendChild(stageText);
-            stagesContainer.appendChild(stageItem);
-          }
-        }
-        card.appendChild(stagesContainer);
-        
-        // افزودن توضیحات بعد از مراحل
-        const p = document.createElement('p');
-        p.innerHTML = `<strong>توضیحات:</strong> ${item.discription}`;
-        card.appendChild(p);
-        
-        list.appendChild(card);
-      });
+            card.innerHTML = cardContent;
+            card.appendChild(stagesContainer);
+            card.appendChild(description);
+            list.appendChild(card);
+        });
     }
+
     function goToStep4() {
-      if (selectedMuscles.length === 0) {
-        alert("لطفاً حداقل یک عضله انتخاب کنید.");
-        return;
-      }
-
-      sessionStorage.setItem('selectedMuscles', JSON.stringify(selectedMuscles));
-
-      document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
-      document.getElementById('step4').classList.add('active');
-      currentStep = 4;
-      updateProgressBar();
+        if (selectedMuscles.length === 0) {
+            alert("لطفاً حداقل یک عضله انتخاب کنید.");
+            return;
+        }
+        sessionStorage.setItem('selectedMuscles', JSON.stringify(selectedMuscles));
+        document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+        document.getElementById('step4').classList.add('active');
+        currentStep = 4;
+        updateProgressBar();
     }
 
-    
     // گرفتن CSRF token از کوکی‌ها
     function getCSRFToken() {
-      let cookieValue = null
-      const cookies = document.cookie.split(';')
-      for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim()
-        if (cookie.startsWith('csrftoken=')) {
-          cookieValue = cookie.substring('csrftoken='.length)
-          break
+        let cookieValue = null;
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith('csrftoken=')) {
+                cookieValue = cookie.substring('csrftoken='.length);
+                break;
+            }
         }
-      }
-      return cookieValue
+        return cookieValue;
     }
-    function goBackToStep3() {
-      document.querySelectorAll('.step').forEach((el) => el.classList.remove('active'));
 
-      currentStep = 3;
-      document.getElementById(`step${currentStep}`).classList.add('active');
-      updateProgressBar();
-      const selectedGender = sessionStorage.getItem('gender');
-      if (selectedGender === 'male') {
-        document.getElementById('male-anatomy').style.display = 'block';
-        document.getElementById('female-anatomy').style.display = 'none';
-      } else if (selectedGender === 'female') {
-        document.getElementById('male-anatomy').style.display = 'none';
-        document.getElementById('female-anatomy').style.display = 'block';
-      }
+    function goBackToStep3() {
+        document.querySelectorAll('.step').forEach((el) => el.classList.remove('active'));
+        currentStep = 3;
+        document.getElementById(`step${currentStep}`).classList.add('active');
+        updateProgressBar();
+        const selectedGender = sessionStorage.getItem('gender');
+        if (selectedGender === 'مرد') { // مقادیر فارسی
+            document.getElementById('male-anatomy').style.display = 'block';
+            document.getElementById('female-anatomy').style.display = 'none';
+        } else if (selectedGender === 'زن') { // مقادیر فارسی
+            document.getElementById('male-anatomy').style.display = 'none';
+            document.getElementById('female-anatomy').style.display = 'block';
+        }
     }
 
     function goBackToStep2() {
-      document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
-      document.getElementById('step2').classList.add('active');
-      currentStep = 2;
-      updateProgressBar();
+        document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+        document.getElementById('step2').classList.add('active');
+        currentStep = 2;
+        updateProgressBar();
     }
 
     function goBackToStep1() {
-      document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
-      document.getElementById('step1').classList.add('active');
-      currentStep = 1;
-      updateProgressBar();
-
+        document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+        document.getElementById('step1').classList.add('active');
+        currentStep = 1;
+        updateProgressBar();
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-      // بررسی اینکه آیا URL شامل #step5 هست
-    if (window.location.hash === '#step5') {
-      // بازگرداندن اطلاعات از localStorage به sessionStorage
-      if (localStorage.getItem('gender')) sessionStorage.setItem('gender', localStorage.getItem('gender'));
-      if (localStorage.getItem('goal')) sessionStorage.setItem('goal', localStorage.getItem('goal'));
-      if (localStorage.getItem('selectedMuscles')) sessionStorage.setItem('selectedMuscles', localStorage.getItem('selectedMuscles'));
-      if (localStorage.getItem('equipments')) {
-        const equipmentArray = JSON.parse(localStorage.getItem('equipments'));
-        equipmentArray.forEach(eq => {
-          const input = document.querySelector(`input[name="equipment"][value="${eq}"]`);
-          if (input) input.checked = true;
-        });
-      }
+        if (window.location.hash === '#step5') {
+            if (localStorage.getItem('gender')) sessionStorage.setItem('gender', localStorage.getItem('gender'));
+            if (localStorage.getItem('goal')) sessionStorage.setItem('goal', localStorage.getItem('goal'));
+            if (localStorage.getItem('selectedMuscles')) sessionStorage.setItem('selectedMuscles', localStorage.getItem('selectedMuscles'));
+            if (localStorage.getItem('equipments')) {
+                const equipmentArray = JSON.parse(localStorage.getItem('equipments'));
+                equipmentArray.forEach(eq => {
+                    const input = document.querySelector(`input[name="equipment"][value="${eq}"]`);
+                    if (input) input.checked = true;
+                });
+            }
 
-      // سپس ادامه نمایش مرحله ۵
-      document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
-      const step5 = document.getElementById('step5');
-      if (step5) step5.classList.add('active');
-      currentStep = 5;
-      updateProgressBar();
-
-      submitWorkoutRequest();
-    }
-
+            document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+            const step5 = document.getElementById('step5');
+            if (step5) step5.classList.add('active');
+            currentStep = 5;
+            updateProgressBar();
+            submitWorkoutRequest();
+        }
     });
-
-
-  </script>
-  
+</script>
 {% endblock %}
