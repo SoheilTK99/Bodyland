@@ -1,3 +1,4 @@
+{% load static %}
 <header class="header-area header-sticky background-header">
     <div class="container">
         <div class="row">
@@ -86,9 +87,10 @@
                         </button>
                         </div>
                     
-                    <a class="menu-trigger">
-                        <span>Menu</span>
-                    </a>
+                        <a class="menu-trigger">
+                          <img id="hamburger-img" src="{% static 'assets/images/hamburger-icon.png' %}" alt="Open Menu" />
+                          <img id="close-img" src="{% static 'assets/images/close-icon.png' %}" alt="Close Menu" style="display: none;" />
+                        </a>
 
                 </nav>
             </div>
@@ -266,116 +268,92 @@
   .header-area .main-nav .nav-left > *:not(.search-input) {
     order: 1;
   }
+  .menu-trigger {
+    display: none !important;
+  } /* دکمه همبرگر در دسکتاپ مخفی است */
+
+  .mobile-only-icon {
+    display: none !important;
+  }
 
 
   /* ===================================
      Mobile Style
      =================================== */
 
+
   @media (max-width: 992px) {
     
-    /* ۱. چیدمان اصلی هدر در موبایل */
-    .header-area .main-nav {
-      display: flex;
-      align-items: center; /* آیتم‌ها را در مرکز عمودی قرار می‌دهد */
-    }
+      /* ۱. مخفی کردن تمام آیتم‌های غیرضروری در هدر موبایل */
+      .header-area .main-nav .nav,
+      .header-area .main-nav .nav-left,
+      .header-area .main-nav .nav-center {
+          display: none !important;
+      }
 
-    /* ۲. نمایش دکمه همبرگری در سمت چپ */
-    .header-area .main-nav .menu-trigger {
-      display: block;
-    }
+      /* ۲. چیدمان اصلی هدر (لوگو راست، منو چپ) */
+      .header-area .main-nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          height: 100px;
+          padding: 0 15px;
+          box-sizing: border-box;
+      }
+      
+      /* ۳. نمایش و استایل‌دهی دکمه همبرگری */
+      .header-area .main-nav .menu-trigger {
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          z-index: 1001;
+          width: 40px;
+          height: 40px;
+      }
+      .header-area .main-nav .menu-trigger img {
+          width: 25px;
+          height: 25px;
+      }
+      
+      /* ۴. تنظیم اندازه لوگو */
+      .header-area .main-nav .logo img {
+          width: 150px;
+          margin: 0 !important;
+      }
 
-    /* ۳. انتقال لوگو به سمت راست */
-    .header-area .main-nav .nav-right {
-      /* این دستور جادویی، لوگو را به سمت راست هل می‌دهد */
-      margin-left: auto;
-      padding-bottom: 0 !important;
-      padding-left : 50px;
-    }
-
-    /* ۴. کوچک کردن لوگو و حذف پدینگ‌های اضافی */
-    .header-area .main-nav .nav-right img {
-      width: 150px;
-      padding: 0 !important; /* تمام پدینگ‌های اضافه را حذف کن */
-      margin-left: 155px;
-      padding-bottom: 30px !important;
-    }
-
-    /* ۵. مخفی کردن آیتم‌های غیرضروری */
-    .header-area .main-nav .nav-left,
-    .header-area .main-nav .nav-center {
-      display: none;
-    }
-
-
-    /* ۶. استایل منوی بازشونده (بدون تغییر) */
-    .header-area.menu-open .main-nav .nav-center {
-      display: block;
-      position: absolute;
-      top: 80px;
-      left: 0;
-      width: 100%;
-      background-color: #1f2122;
-      box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
-    }
-    .header-area.menu-open .main-nav .nav {
-      display: flex;
-      flex-direction: column;
-      padding: 15px 0;
-    }
-    .header-area.menu-open .main-nav .nav li {
-      width: 100%;
-      text-align: center;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .header-area.menu-open .main-nav .nav li:last-child {
-      border-bottom: none;
-    }
-    .header-area.menu-open .main-nav .mobile-only-icon {
-        display: block !important;
-    }
-    .header-area.menu-open .main-nav .mobile-only-icon a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-
-    /* ۷. استایل‌های دکمه همبرگری (بدون تغییر) */
-    .header-area .main-nav .menu-trigger {
-      cursor: pointer;
-      position: relative;
-      width: 32px;
-      height: 40px;
-      text-indent: -9999em;
-      z-index: 99;
-    }
-    .header-area .main-nav .menu-trigger span,
-    .header-area .main-nav .menu-trigger span:before,
-    .header-area .main-nav .menu-trigger span:after {
-      background-color: #fff;
-      width: 30px;
-      height: 2px;
-      position: absolute;
-      left: 0;
-      transition: all 0.3s ease-in-out;
-    }
-    .header-area .main-nav .menu-trigger span { top: 16px; }
-    .header-area .main-nav .menu-trigger span:before { content: ''; top: -8px; }
-    .header-area .main-nav .menu-trigger span:after { content: ''; top: 8px; }
-
-    /* تبدیل آیکون به ضربدر */
-    .header-area.menu-open .menu-trigger span { background-color: transparent; }
-    .header-area.menu-open .menu-trigger span:before { top: 0; transform: rotate(45deg); }
-    .header-area.menu-open .menu-trigger span:after { top: 0; transform: rotate(-45deg); }
+      /* ۵. استایل منوی بازشونده */
+      .header-area.menu-open .nav-center {
+          display: block !important; /* <<<< اصلاحیه اصلی اینجا بود */
+          position: absolute;
+          top: 100px;
+          left: 0;
+          width: 100%;
+          background-color: #1f2122;
+          padding: 10px 0;
+          z-index: 1000;
+          box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+      }
+      .header-area.menu-open .nav {
+          display: flex !important;
+          flex-direction: column;
+      }
+      .header-area.menu-open .nav li {
+          text-align: center;
+          width: 100%;
+          padding: 12px 0;
+          border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+      .header-area.menu-open .nav li:last-child {
+          border-bottom: none;
+      }
+      .header-area.menu-open .nav .mobile-only-icon {
+          display: flex !important; /* برای نمایش آیتم‌های موبایل */
+          justify-content: center;
+          align-items: center;
+      }
   }
-
-  /* این کدها هم برای دسکتاپ لازم هستند و باید خارج از مدیا کوئری باشند */
-  .main-nav .mobile-only-icon {
-    display: none !important;
-  }
-
 
 
 </style>
