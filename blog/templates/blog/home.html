@@ -11,7 +11,7 @@
     .h4 {
       font-family: 'Vazirmatn', sans-serif;
     }
-    .item item-1 {
+    .item.item-1 {
       direction: rtl;
     }
     .fix-font-numbers {
@@ -46,121 +46,125 @@
 
     /* END: CSS for Swiper Pagination & Navigation */
     
-    /* این استایل‌ها برای عکس پس‌زمینه اسلایدهاست */
     .swiper-slide {
         position:relative;
         background-size: cover;
         background-position: center center;
+        border-radius: 35px;
         background-repeat: no-repeat;
         height: 100%;
-        min-height: 690px;
+        min-height: 690px; 
     }
 
-    .item-1 { background-image: url({% static "/assets/images/slider1.jpg" %}); }
-    .item-2 { background-image: url({% static "/assets/images/slider2.jpg" %}); }
-    .item-3 { background-image: url({% static "/assets/images/slider9.jpg" %}); }
-    .item-4 { background-image: url({% static "/assets/images/slider10.jpg" %}); }
-    .item-5 { background-image: url({% static "/assets/images/slider11.png" %}); margin-top: 50px }
+    .item-1 { background-image: url("{% static 'assets/images/slider1.jpg' %}"); margin-top: 50px; }
+    .item-2 { background-image: url("{% static 'assets/images/slider2.jpg' %}"); margin-top: 50px; }
+    .item-3 { background-image: url("{% static 'assets/images/slider9.jpg' %}"); margin-top: 50px; }
+    .item-4 { background-image: url("{% static 'assets/images/slider10.jpg' %}"); margin-top: 50px; }
+    .item-5 { background-image: url("{% static 'assets/images/slider11.png' %}"); margin-top: 50px; }
 
 
-  /* ===================================
-    کد نهایی برای ریسپانسیو کردن اسلایدر
-    =================================== */
 
 
-  @media (max-width: 767px) {
-    
-      /* حذف فاصله اضافی کناری از کل بخش اسلایدر */
-      .main-banner {
-          padding: 100px 5px !important;
-      }
 
-      /* این استایل‌ها برای عکس پس‌زمینه اسلایدهاست */
-      .swiper-slide {
-        min-height: 300px;
-        background-size: contain !important;
-       }
 
-      /* ۲. بهینه‌سازی استایل متن روی اسلایدر */
-      .header-text h2 {
-          font-size: 16px !important;
-          line-height: 1.4 !important;
-          text-align: center !important;
-          padding: 10px 50px 10px 50px !important;
-          margin-top: 0 !important;
-          margin-left: 2px !important;
-          margin-right: 2px !important;
-          background-color: rgba(0, 0, 0, 0.5); /* پس‌زمینه نیمه‌شفاف برای خوانایی بهتر */
-          border-radius: 10px; /* گرد کردن گوشه‌های کادر */
-          width: 100%; /* <<<< کادر را مجبور به گرفتن عرض کامل می‌کند */
-          box-sizing: border-box; /* <<<< برای محاسبه صحیح پدینگ */
-      }
+    /* ===================================
+        Mobile style
+      =================================== */
+
+
+    @media (max-width: 767px) {
       
-   
-      .header-text br {
-          display: none;
-      }
-      
-   
-      .header-text {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100%;
-      }
+        /* حذف فاصله اضافی کناری از کل بخش اسلایدر */
+        .main-banner {
+            padding: 100px 0px 20px 0px !important;
+            border-bottom-left-radius: 90px;
+        }
 
-      .swiper-slide.item-5 .header-text h2 {
-          transform: translateY(-50px); 
-          font-size: 16px !important;
-          padding: 10px 30px 10px 30px !important;
-      }  
-      
-      .swiper-slide.item-5 {
-
+        /* این استایل‌ها برای عکس پس‌زمینه اسلایدهاست */
+        .swiper-slide {
+          min-height: 300px;
           background-size: cover !important;
-          min-height: 200px;
+        }
 
-      }       
-
-
-      
-      .main-banner-swiper {
-          position: relative;
-          min-height: 10px;
-      }
-
-      .main-banner-swiper .swiper-pagination-bullet {
-          width: 12px;
-          height: 12px;
-          background-color: rgba(255, 255, 255, 0.7);
-          opacity: 1;
-          transition: background-color 0.3s ease;
+        /* ۲. بهینه‌سازی استایل متن روی اسلایدر */
+        .header-text h2 {
+            font-size: 16px !important;
+            line-height: 1.4 !important;
+            text-align: center !important;
+            padding: 10px 30px 10px 30px !important;
+            margin-top: 0 !important;
+            margin-left: 2px !important;
+            margin-right: 2px !important;
+            background-color: rgba(0, 0, 0, 0.5); /* پس‌زمینه نیمه‌شفاف برای خوانایی بهتر */
+            border-radius: 10px; /* گرد کردن گوشه‌های کادر */
+            width: 100%; /* <<<< کادر را مجبور به گرفتن عرض کامل می‌کند */
+            box-sizing: border-box; /* <<<< برای محاسبه صحیح پدینگ */
+        }
         
-      }
+        .header-text br {
+            display: none;
+        }
+        
+    
+        .header-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+          
+        .swiper-slide.item-1 .header-text h2,
+        .swiper-slide.item-2 .header-text h2,
+        .swiper-slide.item-3 .header-text h2,
+        .swiper-slide.item-4 .header-text h2 {
+            transform: translateY(-50px);
+        }
 
-      .main-banner-swiper .swiper-pagination-bullet-active {
-          background-color: #ff9500ff;
-      }
+        .swiper-slide.item-5 .header-text h2 {
+            transform: translateY(-50px); 
+            font-size: 16px !important;
+            padding: 10px 30px 10px 30px !important;
+        }  
+        
+        .swiper-slide.item-1,
+        .swiper-slide.item-2,
+        .swiper-slide.item-3,
+        .swiper-slide.item-4 {
+            background-size: cover !important;
+            min-height: 200px;
+        }
 
-      .main-banner-swiper .swiper-pagination {
-          position: static; 
-          margin-top: 10px;
-          margin-bottom: 0px; 
-          transform: translateY(-55px);
-          border-radius: 25px;
-      }      
+        .swiper-slide.item-5 {
 
+            background-size: cover !important;
+            min-height: 200px;
+        }       
+  
+        .main-banner-swiper {
+            position: relative;
+            min-height: 10px;
+        }
 
+        .main-banner-swiper .swiper-pagination-bullet {
+            width: 9px;
+            height: 9px;
+            background-color: rgba(255, 255, 255, 0.7);
+            opacity: 1;
+            transition: background-color 0.3s ease;
+        }
 
+        .main-banner-swiper .swiper-pagination-bullet-active {
+            background-color: #ff9500ff;
+        }
 
-
-
-
-
-  }
-
-
-
+        .main-banner-swiper .swiper-pagination {
+            position: static; 
+            margin-top: 10px;
+            margin-bottom: 0px; 
+            transform: translateY(-5px);
+            border-radius: 25px;
+        }      
+    }
 
   </style>
 
