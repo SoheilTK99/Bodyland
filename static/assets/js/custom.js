@@ -41,8 +41,13 @@
   $(document).ready(function () {
     
     if ($('.menu-trigger').length) {
-      $(".menu-trigger").on('click', function () {
+      $(".menu-trigger").on('click', function () { 
+        // منوی اصلی را باز و بسته می‌کند
         $('.header-area').toggleClass('menu-open');
+        // اسکرول صفحه را قفل/آزاد می‌کند
+        $('body').toggleClass('menu-is-open');
+
+        // دو عکس همبرگر و ضربدر را جابجا می‌کند
         $(this).find('#hamburger-img').toggle();
         $(this).find('#close-img').toggle();
       });
