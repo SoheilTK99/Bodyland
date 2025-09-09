@@ -74,19 +74,17 @@
 
     @media (max-width: 767px) {
       
-        /* حذف فاصله اضافی کناری از کل بخش اسلایدر */
+
         .main-banner {
             padding: 100px 0px 20px 0px !important;
             border-bottom-left-radius: 90px;
         }
 
-        /* این استایل‌ها برای عکس پس‌زمینه اسلایدهاست */
         .swiper-slide {
           min-height: 300px;
           background-size: cover !important;
         }
 
-        /* ۲. بهینه‌سازی استایل متن روی اسلایدر */
         .header-text h2 {
             font-size: 16px !important;
             line-height: 1.4 !important;
@@ -163,7 +161,77 @@
             margin-bottom: 0px; 
             transform: translateY(-5px);
             border-radius: 25px;
-        }      
+        }    
+        
+/* ---------------- End Sliders ---------------- */    
+    
+        .section.testimonials {
+          display: none;
+        }
+
+
+        .services .service-item {
+          position: relative;
+          margin-top: 20px;       
+        }
+
+        .services .service-item .icon {
+          display: none;
+          width: 80px;
+          height: 80px;
+          /* display: inline-block; */
+          text-align: center;
+          line-height: 190px;
+          background-color: #7a6ad8;
+          border-radius: 50%;
+          position: absolute;
+          right: 0;
+          top: -95px;
+        }
+
+        .services .service-item .icon img {
+          display: none;
+          max-width: 40px;
+          transition: all .2s;
+        }
+
+        .services .service-item .main-content {
+          border-radius: 15px;
+          padding: 0px 0px 0px 0px;
+          background-color: #d3d3d3;
+          margin-bottom: 0px;
+          margin-right: 0px;
+          transition: all .4s;
+          height: 90px !important;
+          background-color: #ffa200b5;
+          background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
+          /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+
+       
+          
+        }
+
+        .services .service-item .main-content a {
+          display: none;
+        }
+
+        .services .service-item h4 {
+  
+          font-size: 19px;
+          font-weight: 900;
+          padding-top: 30px !important;
+          line-height: 30px; 
+          transition: all .4s;
+        }
+
+        .services .service-item p {
+          display: none;
+          color: #4a4a4a;
+          margin-bottom: 25px;
+        }
+
+
+
     }
 
   </style>
