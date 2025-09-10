@@ -78,6 +78,7 @@
         .main-banner {
             padding: 100px 0px 20px 0px !important;
             border-bottom-left-radius: 90px;
+            margin-bottom: -120px;
         }
 
         .swiper-slide {
@@ -89,7 +90,7 @@
             font-size: 16px !important;
             line-height: 1.4 !important;
             text-align: center !important;
-            padding: 10px 30px 10px 30px !important;
+            padding: 10px 10px 10px 10px !important;
             margin-top: 0 !important;
             margin-left: 2px !important;
             margin-right: 2px !important;
@@ -172,8 +173,13 @@
 
         .services .service-item {
           position: relative;
-          margin-top: 20px;       
+          margin-top: 20px; 
+          transition: transform 0.3s ease;   
         }
+
+        .services .service-item:active  {
+          transform: scale(1.02);
+        }        
 
         .services .service-item .icon {
           display: none;
@@ -196,32 +202,42 @@
         }
 
         .services .service-item .main-content {
-          border-radius: 15px;
+          position: relative;
+          border-radius: 20px;
           padding: 0px 0px 0px 0px;
-          background-color: #d3d3d3;
           margin-bottom: 0px;
           margin-right: 0px;
           transition: all .4s;
-          height: 90px !important;
-          background-color: #ffa200b5;
-          background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
-          /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+          height: 55px !important;
+          background: linear-gradient(to bottom, #dcd7fb8b, #bcb0ff8b);
 
-       
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
           
         }
 
+
+
+        .services .service-item .main-content .main-button {
+          opacity: 0;
+        }       
+
         .services .service-item .main-content a {
-          display: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
         }
 
         .services .service-item h4 {
-  
           font-size: 19px;
-          font-weight: 900;
-          padding-top: 30px !important;
+          font-weight: 700;
           line-height: 30px; 
           transition: all .4s;
+          margin: 0; /* <<<< مارجین‌ها را حذف می‌کند */
         }
 
         .services .service-item p {
@@ -229,8 +245,6 @@
           color: #4a4a4a;
           margin-bottom: 25px;
         }
-
-
 
     }
 

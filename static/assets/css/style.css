@@ -305,6 +305,16 @@ body.dark-mode .contact-us .contact-us-content::before {
   background-color: #1f2122;
   }
 
+  body.dark-mode::before {
+    background-image: none;
+  }
+
+  body::before,
+  .contact-us::before { 
+    background-image: none;
+  }
+
+
 }
 
 
@@ -771,7 +781,7 @@ Banner Style
   background-position: right bottom;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 140px 100px 120px 100px;
+  padding: 90px 10px 120px 1px;
 
 }
 
