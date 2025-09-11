@@ -78,7 +78,7 @@
         .main-banner {
             padding: 100px 0px 20px 0px !important;
             border-bottom-left-radius: 90px;
-            margin-bottom: -120px;
+            margin-bottom: -150px;
         }
 
         .swiper-slide {
@@ -203,7 +203,7 @@
 
         .services .service-item .main-content {
           position: relative;
-          border-radius: 20px;
+          border-radius: 14px;
           padding: 0px 0px 0px 0px;
           margin-bottom: 0px;
           margin-right: 0px;
@@ -211,7 +211,7 @@
           height: 55px !important;
           background-image: url("/static/assets/images/double-lined.png");
           /* background: linear-gradient(to bottom, #dcd7fb8b, #bcb0ff8b); */
-          background-color: #F79A0E;
+          background-color: #DEDAF6 ;
 
           display: flex;
           justify-content: center;
@@ -246,6 +246,121 @@
           color: #4a4a4a;
           margin-bottom: 25px;
         }
+/* ---------------- End Service Sections ---------------- */  
+
+        .events .section-heading {
+          margin-bottom: 300px;
+        }
+
+        .events .item {
+
+          display: flex;
+          flex-direction: column; /* آیتم‌ها را به صورت ستونی (زیر هم) می‌چیند */
+          align-items: center;   /* آیتم‌ها را در مرکز افقی قرار می‌دهد */
+
+          background-color: rgba(211, 211, 211, 0.6); 
+          border-radius: 25px;
+          position: relative;
+          padding: 80px;
+          margin-bottom: 300px;
+        }
+
+
+        .events .item .image {
+          position:static;
+          padding-bottom: 20px;
+
+        }
+
+        .events .item .image img {
+        
+          object-fit: cover;
+          border-radius: 20px;
+ 
+          top: -150px;
+          right: 80px;
+          width: 180px;
+          height: 240px;
+        }
+
+        .events .item ul li {
+          display: inline-block;
+          width: 17.5%;
+          vertical-align: middle;
+        }
+
+        .events .item ul li:first-child {
+          width: 35%;
+        }
+
+        .events .item ul li:nth-of-type(2) {
+          width: 28%;
+        }
+
+        .events .item ul li span.category {
+          white-space: nowrap;
+          font-size: 14px;
+          text-transform: uppercase;
+          color: #7a6ad8;
+          background-color: #fff;
+          padding: 8px 50px 8px 50px;
+          border-radius: 25px;
+          font-weight: 500;
+          margin-left: 5px;
+          margin-right: 5px;
+          margin-bottom: 20px;
+        }
+
+
+        .events .item ul li:not(.category) {
+            white-space: nowrap;
+            display: block !important; 
+            width: 100%;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+
+
+        .events .item ul li span {
+          display: inline-block;
+          font-size: 14px;
+          color: #4a4a4a;
+          margin-bottom: 10px;
+        }
+
+
+        .events .item a {
+   
+          /* ۱. موقعیت‌دهی در مرکز افقی و پایین */
+          position: absolute;
+          rotate: 270deg;
+          left: 44%;
+          bottom: -30px; /* دکمه را در لبه پایینی قرار می‌دهد (نصف بیرون، نصف داخل) */
+          transform: translateX(-50%); /* برای وسط‌چین کردن دقیق */
+          top: 320px; /* استایل دسکتاپ را لغو می‌کند */      
+          background-color: #7a6ad8;
+          width: 40px;
+          height: 120px;
+          display: inline-block; 
+          text-align: center;
+          line-height: 120px;
+          font-size: 18px;
+          z-index: 1;
+          color: #fff;
+          border-radius: 0px 60px 60px 0px;
+          padding: 100px 0px 210px 0px;
+        }
+
+
+
+
+
+
+
+
+
+
 
     }
 
