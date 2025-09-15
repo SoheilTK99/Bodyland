@@ -1413,7 +1413,8 @@ Events Style
   border-radius: 25px;
   position: relative;
   padding: 40px;
-  margin-bottom: 96px;
+  margin-bottom: 110px;
+
 }
 
 
@@ -1461,16 +1462,17 @@ Events Style
 }
 
 .events .item ul li span {
-  display: inline-block;
+  display: inline-block; 
   font-size: 14px;
   color: #4a4a4a;
   margin-bottom: 10px;
 }
 
 .events .item ul li h6 {
-  font-size: 16px;
-  color: #7a6ad8;
+  font-size: 15px;
+  color: #4a4a4a;
   font-weight: 600;
+
 }
 
 .events .item a {

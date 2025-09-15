@@ -4,11 +4,16 @@ from ckeditor.fields import RichTextField
 
 class Course(models.Model):
 
+    COURSE_LEVEL = (
+    ('Beginner' , 'مبتدی'),
+    ('Intermediate' , 'متوسط'),
+    ('Advanced' , 'حرفه‌ای'),
+    )
 
     course_name = models.CharField(("نام دوره"),max_length=30, null=True, blank=True)
     short_discription = models.CharField(("توضیحات کوتاه "),max_length=100,null=True, blank=True)
     long_discription = RichTextField((" توضیحات بلند"),max_length=15000,null=True, blank=True)
-    start_at = models.DateField(("تاریخ شروع "),null=True, blank=True)
+    course_level = models.CharField((" سطح دوره "), choices=COURSE_LEVEL, default='Beginner')
     duration = models.PositiveIntegerField(("مدت زمان دوره "),help_text="مدت زمان دوره به ساعت",null=True, blank=True)
     course_price = models.PositiveIntegerField(("قیمت "),help_text="قیمت دوره به تومان",null=True, blank=True)
     course_image1 = models.ImageField(("عکس اول"),upload_to='image/',null=True, blank=True)
