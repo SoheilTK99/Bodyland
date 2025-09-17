@@ -154,56 +154,54 @@
   </style>
 
   <div class="course-detail-container">
-    <h1>{{ courseid.course_name }}</h1>
+      <h1>{{ courseid.course_name }}</h1>
 
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="{{ courseid.course_image1.url }}" alt="Course Image 1" />
-        </div>
-        <div class="swiper-slide">
-          <img src="{{ courseid.course_image2.url }}" alt="Course Image 2" />
-        </div>
-        <div class="swiper-slide">
-          <img src="{{ courseid.course_image3.url }}" alt="Course Image 3" />
-        </div>
+      <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                  <img src="{{ courseid.course_image1.url }}" alt="Course Image 1" />
+              </div>
+              <div class="swiper-slide">
+                  <img src="{{ courseid.course_image2.url }}" alt="Course Image 2" />
+              </div>
+              <div class="swiper-slide">
+                  <img src="{{ courseid.course_image3.url }}" alt="Course Image 3" />
+              </div>
+          </div>
+          <div class="swiper-pagination"></div>
+      </div>
+      
+      <div class="description">{{ courseid.long_discription|safe }}</div>
+
+      <div class="purchase-box">
+          <button class="purchase-btn">پرداخت (<span style="text-decoration: underline; font-size: 18px; font-weight: 600;">{{ courseid.course_price|intcomma }} تومان</span>)</button>
       </div>
 
-      <div class="swiper-pagination"></div>
-    </div>
-    
-    <div class="description">{{ courseid.long_discription|safe }}</div>
-
-    <div class="purchase-box">
-      <button class="purchase-btn">پرداخت (<span style="text-decoration: underline; font-size: 18px; font-weight: 600;">{{ courseid.course_price|intcomma }} تومان</span>)</button>
-    </div>
-
-    <div class="course-detail-info">
-      <h4><span><img src="/static/assets/images/rush.png" alt="short courses" /></span>ثبت سفارش سریع</h4>
-      <h4><span><img src="/static/assets/images/money-bag.png" alt="short courses" /></span> قیمت مقرون به صرفه</h4>
-      <h4><span><img src="/static/assets/images/telephone.png" alt="short courses" /></span> پشتیبانی 24 ساعته</h4>
-      <h4><span><img src="/static/assets/images/medal.png" alt="short courses" /></span> کیفیت بالای محصول</h4>
-      <h4><span><img src="/static/assets/images/star.png" alt="short courses" /></span> رضایت مندی مشتریان</h4>
-      <h4><span><img src="/static/assets/images/check-mark.png" alt="short courses" /></span> دارای نماد اعتماد</h4>
-    </div>
+      <div class="course-detail-info">
+          <h4><span><img src="/static/assets/images/rush.png" alt="short courses" /></span>ثبت سفارش سریع</h4>
+          <h4><span><img src="/static/assets/images/money-bag.png" alt="short courses" /></span> قیمت مقرون به صرفه</h4>
+          <h4><span><img src="/static/assets/images/telephone.png" alt="short courses" /></span> پشتیبانی 24 ساعته</h4>
+          <h4><span><img src="/static/assets/images/medal.png" alt="short courses" /></span> کیفیت بالای محصول</h4>
+          <h4><span><img src="/static/assets/images/star.png" alt="short courses" /></span> رضایت مندی مشتریان</h4>
+          <h4><span><img src="/static/assets/images/check-mark.png" alt="short courses" /></span> دارای نماد اعتماد</h4>
+      </div>
   </div>
 
- 
-
   <script>
-    var swiper = new Swiper(".mySwiper", {
-      loop: true, 
-      
-      
-      autoplay: {
-        delay: 3000, 
-        disableOnInteraction: false, 
-      },
-
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-    });
+      document.addEventListener('DOMContentLoaded', function () {
+          // این کد فقط بعد از بارگذاری کامل صفحه اجرا می‌شود
+          var swiper = new Swiper(".mySwiper", {
+              loop: true,
+              autoplay: {
+                  delay: 3000,
+                  disableOnInteraction: false,
+              },
+              pagination: {
+                  el: ".swiper-pagination",
+                  clickable: true,
+              },
+          });
+      });
   </script>
+
 {% endblock %}

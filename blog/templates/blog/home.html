@@ -31,7 +31,7 @@
         background-color: rgba(255, 255, 255, 0.7);
         opacity: 1;
         transition: background-color 0.3s ease;
-       
+        
     }
 
     .main-banner-swiper .swiper-pagination-bullet-active {
@@ -123,7 +123,7 @@
             transform: translateY(-50px); 
             font-size: 16px !important;
             padding: 10px 30px 10px 30px !important;
-        }  
+        } 
         
         .swiper-slide.item-1,
         .swiper-slide.item-2,
@@ -162,9 +162,9 @@
             margin-bottom: 0px; 
             transform: translateY(-5px);
             border-radius: 25px;
-        }    
+        }   
         
-/* ---------------- End Sliders ---------------- */    
+/* ---------------- End Sliders ---------------- */   
     
         .section.testimonials {
           display: none;
@@ -179,7 +179,7 @@
 
         .services .service-item:active  {
           transform: scale(1.02);
-        }        
+        }       
 
         .services .service-item .icon {
           display: none;
@@ -219,11 +219,9 @@
           
         }
 
-
-
         .services .service-item .main-content .main-button {
           opacity: 0;
-        }       
+        }     
 
         .services .service-item .main-content a {
           position: absolute;
@@ -246,39 +244,73 @@
           color: #4a4a4a;
           margin-bottom: 25px;
         }
-/* ---------------- End Service Sections ---------------- */  
+/* ---------------- End Service Sections ---------------- */ 
 
         .events .section-heading {
-          margin-bottom: 300px;
+          margin-bottom: 0px;
+          margin-top: -100px;
+          
         }
 
+        /* START: استایل‌های نهایی برای اسلایدر دوره‌ها */
+
+        /* ۱. به کانتینر اصلی اسلایدر فضای کافی از بالا می‌دهیم */
+        .courses-swiper {
+          width: 100%;
+          padding-bottom: 50px;
+          margin-top: 100px;
+          overflow: visible;
+        }
+        
+        /* ۲. به هر اسلاید اجازه می‌دهیم محتوای بیرون زده را نمایش دهد */
+        .courses-swiper .swiper-slide {
+          overflow: visible;
+        }
+
+        /* ۳. داخل کارت، فضای خالی در بالا برای عکس ایجاد می‌کنیم */
         .events .item {
           position: relative;
           display: flex;
-          flex-direction: column; /* آیتم‌ها را به صورت ستونی (زیر هم) می‌چیند */
-          align-items: center;   /* آیتم‌ها را در مرکز افقی قرار می‌دهد */
-          background-color: rgba(211, 211, 211, 0.6); 
+          flex-direction: column; 
+          align-items: center;
+          text-align: center;
+          background-color: #f0f0f0;
           border-radius: 25px;
-          padding: 80px 0px 0px;
-          margin-bottom: 200px;
+          padding: 110px 20px 30px;
+          margin: 0; /* حذف هرگونه مارجین اضافه */
         }
 
-
         .events .item .image {
-          position:static;
-          padding-bottom: 20px;
+          position: absolute;
+          top: -85px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 170px;
+          height: 170px;
+          border-radius: 50%;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+          z-index: 10;
+          border: 4px solid white;
 
+          /* === خصوصیات جدید و مطمئن برای پس‌زمینه === */
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center 35%; /* <<<< برای تنظیم ارتفاع عکس، این درصد را تغییر دهید */
         }
 
         .events .item .image img {
-        
+          width: 100%;
+          height: 100%;
           object-fit: cover;
-          border-radius: 20px;
- 
-          top: -150px;
-          right: 80px;
-          width: 180px;
-          height: 240px;
+          object-position: center 5%; /* <<<< این خط جدید را اضافه کنید */
+        }
+        
+        .courses-swiper .swiper-pagination {
+          bottom: 10px !important;
+        }
+        
+        .courses-swiper .swiper-pagination-bullet-active {
+          background-color: rgba(255, 157, 0, 0.8);;
         }
 
         .events .item ul li {
@@ -309,7 +341,6 @@
           margin-bottom: 20px;
         }
 
-
         .events .item ul li:not(.category) {
             white-space: nowrap;
             display: block !important; 
@@ -318,15 +349,12 @@
             margin-bottom: 15px;
         }
 
-
-
         .events .item ul li span {
           display: inline-block;
           font-size: 14px;
           color: #4a4a4a;
           margin-bottom: 10px;
         }
-
 
         .events .item a {
             position: absolute;
@@ -453,7 +481,7 @@
               <h6 style="font-size: 17px;">معرفی</h6>
               <h2 style="color: black !important;">چرا بادی لند؟!</h2>
               <p style="font-size: 18px; line-height: 2;">
-               به خانه تخصصی ورزش و تناسب اندام خوش آمدید! <br>بادی لند با تحربه چندین ساله خود در هدف ارتقاء سطح تمرین و تجربه ورزشی شما فعالیت میکند . 
+                به خانه تخصصی ورزش و تناسب اندام خوش آمدید! <br>بادی لند با تحربه چندین ساله خود در هدف ارتقاء سطح تمرین و تجربه ورزشی شما فعالیت میکند . 
               </p>
 
             </div>
@@ -522,42 +550,89 @@
               <h2>دوره های ویژه</h2>
             </div>
           </div>
-          {% for course in courses %}
-            <div class="col-lg-12 col-md-6">
-              <div class="item">
-                <div class="row">
-                  <div class="col-lg-3">
-                    <div class="image">
-                      <img src="{{ course.course_lable.url }}" />
+        </div>
+
+        <div class="d-none d-md-block"> <div class="row">
+            {% for course in courses %}
+              <div class="col-lg-12 col-md-6">
+                <div class="item">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <div class="image">
+                        <img src="{{ course.course_lable.url }}" />
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-lg-9">
-                    <ul>
-                      <li>
-                        <span class="category">{{ course.course_name }}</span>
-                        <h4>{{ course.short_discription }}</h4>
-                      </li>
-                      <li>
-                        <span>سطح دوره:</span>
-                        <h6>{{ course.get_course_level_display }}</h6>
-                      </li>
-                      <li>
-                        <span>مدت زمان:</span>
-                        <h6>{{ course.duration }} ساعت</h6>
-                      </li>
-                      <li>
-                        <span>قیمت:</span>
-                        <h6>{{ course.course_price|intcomma }} تومان</h6>
-                      </li>
-                    </ul>
-                    <a href="{% url 'course:course_detail' course.id %}"><i class="fa fa-angle-left"></i></a>
+                    <div class="col-lg-9">
+                      <ul>
+                        <li>
+                          <span class="category">{{ course.course_name }}</span>
+                          <h4>{{ course.short_discription }}</h4>
+                        </li>
+                        <li>
+                          <span>سطح دوره:</span>
+                          <h6>{{ course.get_course_level_display }}</h6>
+                        </li>
+                        <li>
+                          <span>مدت زمان:</span>
+                          <h6>{{ course.duration }} ساعت</h6>
+                        </li>
+                        <li>
+                          <span>قیمت:</span>
+                          <h6>{{ course.course_price|intcomma }} تومان</h6>
+                        </li>
+                      </ul>
+                      <a href="{% url 'course:course_detail' course.id %}"><i class="fa fa-angle-left"></i></a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          {% endfor %}
+            {% endfor %}
+          </div>
         </div>
-      </div>
+
+      <div class="d-block d-md-none">
+          <div class="swiper courses-swiper">
+            <div class="swiper-wrapper">
+                {% for course in courses %}
+                <div class="swiper-slide">
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-lg-3">
+
+                                <div class="image" style="background-image: url('{{ course.course_lable.url }}');">
+                                    </div>
+
+                            </div>
+                              <div class="col-lg-9">
+                                  <ul>
+                                      <li>
+                                          <span class="category">{{ course.course_name }}</span>
+                                          <h4>{{ course.short_discription }}</h4>
+                                      </li>
+                                      <li>
+                                          <span>سطح دوره:</span>
+                                          <h6>{{ course.get_course_level_display }}</h6>
+                                      </li>
+                                      <li>
+                                          <span>مدت زمان:</span>
+                                          <h6>{{ course.duration }} ساعت</h6>
+                                      </li>
+                                      <li>
+                                          <span>قیمت:</span>
+                                          <h6>{{ course.course_price|intcomma }} تومان</h6>
+                                      </li>
+                                  </ul>
+                                  <a href="{% url 'course:course_detail' course.id %}"></a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  {% endfor %}
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        </div>
     </div>
 
     <div class="section fun-facts" id="fun-facts">
@@ -645,18 +720,34 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
+    // اسلایدر بنر اصلی
     var swiper = new Swiper(".main-banner-swiper", {
       loop: true,
       autoplay: {
-        delay: 3000, // 4 ثانیه
+        delay: 3000,
         disableOnInteraction: true,
       },
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
       },
-
     });
+
+    // START: اسکریپت جدید برای اسلایدر دوره‌ها (فقط در موبایل)
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.innerWidth <= 767) {
+        var coursesSwiper = new Swiper(".courses-swiper", {
+          slidesPerView: 1,
+          spaceBetween: 20,
+          loop: true,
+          pagination: {
+            el: ".courses-swiper .swiper-pagination",
+            clickable: true,
+          },
+        });
+      }
+    });
+    // END: اسکریپت جدید برای اسلایدر دوره‌ها
   </script>
 
 
